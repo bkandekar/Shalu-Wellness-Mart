@@ -160,6 +160,22 @@ function renderProductCard(product) {
           ` : ''}
         </div>
 
+        <!-- Dedicated Product Information Button (माहिती व डिस्क्रिप्शन पहा) -->
+        <button
+          type="button"
+          class="btn btn-outline btn-sm product-info-btn"
+          data-slug="${product.slug}"
+          aria-label="View description and information for ${product.name}"
+          title="प्रॉडक्ट माहिती व संपूर्ण डिस्क्रिप्शन पहा"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          माहिती पहा (Product Info)
+        </button>
+
         <!-- Buttons anchored to the bottom of the card -->
         <div class="product-card-actions">
           <button
@@ -300,8 +316,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 4. Global Delegated Clicks for Add-to-Cart and Buy-Now buttons
+  // 4. Global Delegated Clicks for Info Modal, Add-to-Cart, and Buy-Now buttons
   document.addEventListener('click', async (e) => {
+    // Product info & description modal button
+    const infoBtn = e.target.closest('.product-info-btn');
+    if (infoBtn) {
+      e.preventDefault();
+      const slug = infoBtn.getAttribute('data-slug');
+      if (slug) {
+        await openProductInfoModal(slug);
+      }
+      return;
+    }
+
     const addToCartBtn = e.target.closest('.add-to-cart-btn');
     if (addToCartBtn && !addToCartBtn.disabled) {
       e.preventDefault();
@@ -326,25 +353,160 @@ document.addEventListener('DOMContentLoaded', () => {
   setupFloatingWhatsApp();
 });
 
-function setupFloatingWhatsApp() {
-  if (document.getElementById('whatsapp-float-btn')) return;
-  if (!window.CONFIG) return;
+// Function to show comprehensive product description and details in a modal
+async function openProductInfoModal(slug) {
+  const product = await window.getProductBySlug(slug);
+  if (!product) {
+    if (window.showToast) window.showToast('Product information could not be found.', 'error');
+    return;
+  }
 
-  const btn = document.createElement('a');
-  btn.id = 'whatsapp-float-btn';
-  btn.className = 'whatsapp-float';
-  btn.href = window.CONFIG.getWhatsAppUrl('Hello Shalu Wellness Mart, I am reaching out to enquire about your products.');
-  btn.target = '_blank';
-  btn.rel = 'noopener noreferrer';
-  btn.setAttribute('aria-label', 'Chat with Shalu Wellness Mart on WhatsApp');
-  btn.setAttribute('title', 'Chat on WhatsApp');
-  btn.innerHTML = `
-    <svg class="whatsapp-float-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.34C9.36 7.34 9.09 7.4 8.87 7.65C8.65 7.89 8.02 8.49 8.02 9.72C8.02 10.95 8.91 12.14 9.04 12.31C9.17 12.48 10.8 15 13.3 16.07C13.9 16.33 14.36 16.49 14.72 16.6C15.32 16.79 15.86 16.76 16.3 16.7C16.78 16.63 17.78 16.09 17.98 15.51C18.19 14.93 18.19 14.43 18.13 14.33C18.06 14.23 17.9 14.17 17.65 14.04C17.41 13.92 16.22 13.33 16 13.25C15.78 13.17 15.62 13.13 15.45 13.38C15.29 13.62 14.81 14.17 14.67 14.33C14.53 14.5 14.38 14.52 14.14 14.39C13.9 14.27 12.87 13.93 11.66 12.85C10.72 12.01 10.08 10.98 9.94 10.73C9.8 10.49 9.92 10.36 10.05 10.23C10.16 10.12 10.3 9.93 10.43 9.78C10.56 9.63 10.6 9.53 10.68 9.36C10.77 9.2 10.72 9.05 10.66 8.93C10.6 8.81 10.11 7.61 9.9 7.12C9.7 6.64 9.5 6.7 9.35 6.7C9.21 6.7 9.05 6.7 8.88 6.7L9.53 7.34Z"/>
-    </svg>
-    <span class="whatsapp-float-label">Chat on WhatsApp</span>
+  let modal = document.getElementById('product-info-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'product-info-modal';
+    modal.className = 'product-info-modal-overlay';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'modal-product-title');
+    document.body.appendChild(modal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeProductInfoModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeProductInfoModal();
+      }
+    });
+  }
+
+  const discount = calculateDiscount(product.mrp, product.price);
+  const stockInfo = getStockInfo(product.stock);
+  const primaryImg = (product.images && product.images[0]) || {
+    src: '',
+    alt: product.name,
+    recommendedFilename: 'product-01.jpg',
+    recommendedSize: '600x600px'
+  };
+
+  const categoryObj = (window.CONFIG && window.CONFIG.categories) ?
+    window.CONFIG.categories.find(c => c.slug === product.category) : null;
+  const categoryName = categoryObj ? categoryObj.name : product.category;
+
+  const whatsappInquiryMsg = `Hello Shalu Wellness Mart, I would like to enquire about this product:\n\n*${product.name}*\nPrice: ${window.CONFIG.formatPrice(product.price)}\nCategory: ${categoryName}\n\nPlease share availability and details.`;
+  const whatsappUrl = window.CONFIG.getWhatsAppUrl(whatsappInquiryMsg);
+
+  modal.innerHTML = `
+    <div class="product-info-modal-card">
+      <div class="product-info-modal-header">
+        <div>
+          <span class="product-category-tag" style="font-size: 0.75rem;">${categoryName}</span>
+          <h2 id="modal-product-title" class="product-info-modal-title">${product.name}</h2>
+        </div>
+        <button type="button" class="product-info-modal-close" aria-label="Close product information modal" onclick="closeProductInfoModal()">&times;</button>
+      </div>
+
+      <div class="product-info-modal-body">
+        <div class="modal-product-summary-row">
+          <img src="${primaryImg.src}" alt="${primaryImg.alt || product.name}" class="modal-product-thumb" width="100" height="100">
+          <div class="modal-product-meta-block">
+            <div style="display: flex; align-items: baseline; gap: 0.6rem;">
+              <span class="product-selling-price" style="font-size: 1.35rem;">${window.CONFIG.formatPrice(product.price)}</span>
+              ${product.mrp > product.price ? `
+                <span class="product-mrp">${window.CONFIG.formatPrice(product.mrp)}</span>
+                <span class="badge badge-discount">${discount}% OFF</span>
+              ` : ''}
+            </div>
+            <div style="font-size: 0.8125rem; color: var(--color-secondary-text);">Brand: <strong>${product.brand || 'Brand TBD'}</strong></div>
+            <div><span class="product-stock-tag ${stockInfo.className}">${stockInfo.statusText}</span></div>
+          </div>
+        </div>
+
+        <!-- Full Description Block -->
+        <div class="modal-section-box">
+          <h3 class="modal-section-heading">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            प्रॉडक्ट माहिती व संपूर्ण वर्णन (Product Description)
+          </h3>
+          <p class="modal-section-text">${product.description || product.shortDescription}</p>
+        </div>
+
+        ${product.ingredients ? `
+          <div class="modal-section-box">
+            <h3 class="modal-section-heading">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+              घटक व सामग्री (Ingredients / Composition)
+            </h3>
+            <p class="modal-section-text">${product.ingredients}</p>
+          </div>
+        ` : ''}
+
+        ${product.usage ? `
+          <div class="modal-section-box">
+            <h3 class="modal-section-heading">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              वापरण्याची पद्धत (Usage Instructions)
+            </h3>
+            <p class="modal-section-text">${product.usage}</p>
+          </div>
+        ` : ''}
+
+        ${product.precautions ? `
+          <div class="modal-section-box">
+            <h3 class="modal-section-heading">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              काळजी व सूचना (Precautions)
+            </h3>
+            <p class="modal-section-text">${product.precautions}</p>
+          </div>
+        ` : ''}
+
+        ${product.manufacturer ? `
+          <div class="modal-section-box" style="font-size: 0.8125rem;">
+            <p style="margin-bottom: 0.25rem;"><strong>उत्पादक (Manufacturer):</strong> ${product.manufacturer}</p>
+            <p><strong>एक्स्पायरी (Shelf Life):</strong> ${product.expiry || 'Packaging वर नमूद'}</p>
+          </div>
+        ` : ''}
+      </div>
+
+      <div class="product-info-modal-footer">
+        <a href="product.html?slug=${encodeURIComponent(product.slug)}" class="btn btn-outline btn-sm">
+          संपूर्ण पेज उघडा &rarr;
+        </a>
+        <div style="display: flex; gap: 0.5rem;">
+          <button
+            type="button"
+            class="btn btn-secondary btn-sm"
+            onclick="window.Cart.addToCart('${product.id}', 1); closeProductInfoModal();"
+            ${!stockInfo.canBuy ? 'disabled' : ''}
+          >
+            Add to Cart
+          </button>
+          <a
+            href="${whatsappUrl}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-whatsapp btn-sm"
+          >
+            Order on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
   `;
-  document.body.appendChild(btn);
+
+  modal.classList.add('is-open');
+}
+
+function closeProductInfoModal() {
+  const modal = document.getElementById('product-info-modal');
+  if (modal) {
+    modal.classList.remove('is-open');
+  }
 }
 
 // Expose utilities on window
@@ -354,6 +516,8 @@ if (typeof window !== 'undefined') {
   window.getCategories = getCategories;
   window.calculateDiscount = calculateDiscount;
   window.renderProductCard = renderProductCard;
+  window.openProductInfoModal = openProductInfoModal;
+  window.closeProductInfoModal = closeProductInfoModal;
   window.showToast = showToast;
   window.debounce = debounce;
 }

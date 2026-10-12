@@ -1101,11 +1101,185 @@ textarea:focus-visible {
 }
 
 /* Anchored action buttons at the bottom of equal-height card */
+.product-info-btn {
+  width: 100%;
+  margin-bottom: 0.65rem;
+  background-color: var(--color-soft-green);
+  border: 1.5px solid rgba(45, 106, 79, 0.25);
+  color: var(--color-primary);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-btn);
+  transition: all var(--transition-speed) ease;
+}
+
+.product-info-btn:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(27, 67, 50, 0.15);
+}
+
 .product-card-actions {
   margin-top: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
+}
+
+/* ---------------- PRODUCT QUICK INFO MODAL ---------------- */
+.product-info-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(8, 28, 21, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 2500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.product-info-modal-overlay.is-open {
+  display: flex;
+  opacity: 1;
+}
+
+.product-info-modal-card {
+  background-color: var(--color-white);
+  border: 1.5px solid var(--color-border);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 650px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 50px -12px rgba(8, 28, 21, 0.35);
+  overflow: hidden;
+  transform: scale(0.96) translateY(12px);
+  transition: transform 0.25s ease;
+}
+
+.product-info-modal-overlay.is-open .product-info-modal-card {
+  transform: scale(1) translateY(0);
+}
+
+.product-info-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1.5px solid var(--color-border);
+  background-color: var(--color-warm-neutral);
+}
+
+.product-info-modal-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-deep);
+  line-height: 1.25;
+  margin-right: 1rem;
+}
+
+.product-info-modal-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  background-color: var(--color-white);
+  color: var(--color-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.product-info-modal-close:hover {
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger);
+  border-color: var(--color-danger);
+}
+
+.product-info-modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.modal-product-summary-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 1.25rem;
+  align-items: center;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.modal-product-thumb {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-warm-neutral);
+}
+
+.modal-product-meta-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.modal-section-box {
+  background-color: var(--color-warm-neutral);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.15rem;
+}
+
+.modal-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-deep);
+  margin-bottom: 0.5rem;
+}
+
+.modal-section-text {
+  font-size: 0.9rem;
+  color: var(--color-secondary-text);
+  line-height: 1.6;
+}
+
+.product-info-modal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border-top: 1.5px solid var(--color-border);
+  background-color: var(--color-warm-neutral);
 }
 
 /* ---------------- STEP WORKFLOW BANNER ---------------- */
