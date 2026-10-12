@@ -1,6 +1,6 @@
 /**
  * SHALU WELLNESS MART - PRODUCTS DATA (PHASE 1 DATA STORE)
- * 12 Clearly Labelled Demo Products Across 6 Categories.
+ * 12 Clearly Labelled Demo Products + 5 Real IMC Products Across 6 Categories.
  * Fields: id, name, slug, category, brand, mrp, price, stock,
  * shortDescription, description, ingredients, usage, precautions,
  * manufacturer, expiry, featured, active, images.
@@ -376,6 +376,161 @@ const PRODUCTS_DATA = [
         src: createSvgPlaceholder('Seaweed Extract Garden Spray', 'Gardening & Plant Care', '#4D7C0F', 'seaweed-spray.jpg', '600 x 600 px'),
         alt: 'Seaweed Extract Garden Spray 250ml - Shalu Wellness Mart',
         recommendedFilename: 'seaweed-spray-01.jpg',
+        recommendedSize: '600x600px'
+      }
+    ]
+  },
+
+  // ============================================================
+  // REAL IMC PRODUCTS (descriptions taken from product creatives, in English)
+  // NOTE: mrp / price / stock are PLACEHOLDERS - update with real values.
+  // ============================================================
+
+  // IMC - Health Care: Fat Away
+  {
+    id: 'prod-013',
+    name: 'IMC Fat Away (60 Tablets)',
+    slug: 'imc-fat-away-60-tablets',
+    category: 'health-care',
+    brand: 'IMC',
+    mrp: 999,   // PLACEHOLDER - update
+    price: 999, // PLACEHOLDER - update
+    stock: 10,  // PLACEHOLDER - update
+    isDemo: false,
+    featured: true,
+    active: true,
+    shortDescription: 'FAT AWAY - Your Fitness Partner. Natural formula, better results. Take daily, stay fit always!',
+    description: 'Staying fit just got easier! Say goodbye to fat and hello to yourself! FAT AWAY - Your Fitness Partner. Helps with weight management: helps reduce excess fat stored in the body. Boosts metabolism: helps the body burn more energy by improving metabolism. Controls appetite: helps reduce unnecessary hunger and cravings. Boosts energy: keeps you energetic and active all day. Natural and safe: made from natural ingredients, without any harm. See better changes in just 60 days!* Why choose FAT AWAY? Natural ingredients | No side effects | Scientifically developed formula | Trusted quality | Trusted by thousands of satisfied customers. Fit body, healthy life - start today! Get a better, lighter and healthier life!',
+    ingredients: 'Made from natural ingredients (natural formula). Please see the product pack for the complete ingredient list.',
+    usage: 'Take daily and stay fit always! (Stay Fit & Light). Dosage as per the information printed on the product pack.',
+    precautions: '*Results may vary from person to person. Read the instructions on the product pack. Store in a cool, dry place.',
+    manufacturer: 'IMC Herbal (Since 2006)',
+    expiry: 'Please check the date printed on the pack',
+    images: [
+      {
+        src: createSvgPlaceholder('IMC Fat Away 60 Tablets', 'Health Care', '#166534', 'imc-fat-away.jpg', '600 x 600 px'),
+        alt: 'IMC Fat Away 60 Tablets - Shalu Wellness Mart',
+        recommendedFilename: 'imc-fat-away-01.jpg',
+        recommendedSize: '600x600px'
+      }
+    ]
+  },
+
+  // IMC - Health Care: Shri Tulsi Drops
+  {
+    id: 'prod-014',
+    name: 'IMC Shri Tulsi Drops (20 ml)',
+    slug: 'imc-shri-tulsi-drops-20ml',
+    category: 'health-care',
+    brand: 'IMC',
+    mrp: 250,   // PLACEHOLDER - update
+    price: 250, // PLACEHOLDER - update
+    stock: 10,  // PLACEHOLDER - update
+    isDemo: false,
+    featured: true,
+    active: true,
+    shortDescription: 'WORLD BEST Tulsi Drops - a wonderful blend of 5 types of Tulsi. One drop, many benefits!',
+    description: 'Tulsi Drops - a wonderful blend of 5 types of Tulsi. 5 Types of Tulsi: Shyam Tulsi (boosts immunity), Ram Tulsi (beneficial in cold and cough), Vishnu Tulsi (reduces stress), Nimbu Tulsi (improves digestion), Van Tulsi (detoxifies the body). Natural protection, a companion for a healthy life: boosts immunity, strengthens the respiratory system, improves digestive strength, reduces stress and brings peace of mind. One drop, many benefits! Helpful in cold and flu, useful for sore throat, boosts immunity, improves digestion, beneficial in gas and indigestion, gives relief from stress and fatigue. 100% Natural & Safe. Ayurvedic Trusted Formula. Pure Ayurvedic | No side effects | Safe for all ages. Healthy family, happy life.',
+    ingredients: 'Extract of 5 Types of Tulsi - Shyam Tulsi, Ram Tulsi, Vishnu Tulsi, Nimbu Tulsi, Van Tulsi.',
+    usage: 'Dosage as per the information printed on the product pack.',
+    precautions: 'Store in a cool, dry place. Keep the dropper tip clean and dry. Keep out of reach of children.',
+    manufacturer: 'IMC Herbal (Since 2006)',
+    expiry: 'Please check the date printed on the pack',
+    images: [
+      {
+        src: createSvgPlaceholder('IMC Shri Tulsi Drops 20ml', 'Health Care', '#166534', 'imc-shri-tulsi-drops.jpg', '600 x 600 px'),
+        alt: 'IMC Shri Tulsi Drops 20ml - Shalu Wellness Mart',
+        recommendedFilename: 'imc-shri-tulsi-01.jpg',
+        recommendedSize: '600x600px'
+      }
+    ]
+  },
+
+  // IMC - Agriculture: Activator Wetter-Spreader
+  {
+    id: 'prod-015',
+    name: 'IMC Activator Wetter-Spreader (500 ml)',
+    slug: 'imc-activator-wetter-spreader-500ml',
+    category: 'agriculture',
+    brand: 'IMC',
+    mrp: 600,   // PLACEHOLDER - update
+    price: 600, // PLACEHOLDER - update
+    stock: 10,  // PLACEHOLDER - update
+    isDemo: false,
+    featured: true,
+    active: true,
+    shortDescription: 'The impact of every drop, a glow in your crop - better spread, higher yield. Research Based - Silicon Technology.',
+    description: 'ACTIVATOR Wetter-Spreader - Research Based, Silicon Technology. The impact of every drop, a glow in your crop. Better spread, higher yield. Better spread: mixes with water and spreads evenly on every leaf. Increases adhesion: keeps the spray solution stuck on the leaves for greater effect. Boosts effectiveness: multiplies the effect of pesticides, fungicides and nutrients. Increases yield: ensures healthy plants, better growth and higher produce. Useful for all crops: paddy, wheat, sugarcane, cotton, vegetables, fruit plants. Low dose, high impact | Safe and reliable | Better results, the farmer\'s identity | Research-based silicon technology. The first choice of the smart farmer - with ACTIVATOR, your crop will be magnificent!',
+    ingredients: 'Research Based Silicon Technology (Wetter-Spreader). Please see the product pack for the complete ingredient list.',
+    usage: 'Mix 1-2 ml of ACTIVATOR per 15 litres of water and spray. Use mixed with pesticide / fungicide / nutrients.',
+    precautions: 'For agricultural use only. Keep out of reach of children and pets. Read the instructions on the pack before use.',
+    manufacturer: 'IMC',
+    expiry: 'Please check the date printed on the pack',
+    images: [
+      {
+        src: createSvgPlaceholder('IMC Activator Wetter-Spreader', 'Agriculture', '#15803D', 'imc-activator-500ml.jpg', '600 x 600 px'),
+        alt: 'IMC Activator Wetter-Spreader 500ml - Shalu Wellness Mart',
+        recommendedFilename: 'imc-activator-500ml-01.jpg',
+        recommendedSize: '600x600px'
+      }
+    ]
+  },
+
+  // IMC - Home & Lifestyle: Detergent Powder
+  {
+    id: 'prod-016',
+    name: 'IMC Detergent Powder (1 Kg)',
+    slug: 'imc-detergent-powder-1kg',
+    category: 'home-lifestyle',
+    brand: 'IMC',
+    mrp: 120,   // PLACEHOLDER - update
+    price: 120, // PLACEHOLDER - update
+    stock: 20,  // PLACEHOLDER - update
+    isDemo: false,
+    featured: false,
+    active: true,
+    shortDescription: 'Cleanliness you can see, fragrance that stays! Enriched With Powerful Stain Remover.',
+    description: 'NEW Detergent Powder - cleanliness you can see, fragrance that stays! Enriched With Powerful Stain Remover. Removes stains easily: removes tough stains in the best way. Fragrance that lasts long: gives your clothes a feeling of freshness and fragrance. Suitable for both machine and hand wash: great for every type of wash. Protects your clothes: maintains the color and quality of the fabric. More cleaning in less quantity. Helps remove up to 99% germs | A better choice for the environment | More foam, powerful cleaning | Economical and useful. Better cleaning every time. Clean clothes, healthy family.',
+    ingredients: 'Enriched With Powerful Stain Remover. Please see the product pack for the complete ingredient list.',
+    usage: 'Suitable for both machine wash and hand wash. Quantity to be used as per the instructions on the pack.',
+    precautions: 'Keep out of reach of children. Avoid contact with eyes. Store in a dry place.',
+    manufacturer: 'IMC',
+    expiry: 'Please check the date printed on the pack',
+    images: [
+      {
+        src: createSvgPlaceholder('IMC Detergent Powder 1 Kg', 'Home & Lifestyle', '#1E3A8A', 'imc-detergent-1kg.jpg', '600 x 600 px'),
+        alt: 'IMC Detergent Powder 1 Kg - Shalu Wellness Mart',
+        recommendedFilename: 'imc-detergent-1kg-01.jpg',
+        recommendedSize: '600x600px'
+      }
+    ]
+  },
+
+  // IMC - Wellness & Nutrition: Power Shaker
+  {
+    id: 'prod-017',
+    name: 'IMC Power Shaker',
+    slug: 'imc-power-shaker',
+    category: 'wellness-nutrition',
+    brand: 'IMC',
+    mrp: 299,   // PLACEHOLDER - update
+    price: 299, // PLACEHOLDER - update
+    stock: 15,  // PLACEHOLDER - update
+    isDemo: false,
+    featured: false,
+    active: true,
+    shortDescription: 'Energy in every sip, every day with POWER SHAKER - your perfect health partner! 100% Premium Quality.',
+    description: 'Energy in every sip, make every day a POWER SHAKER day - your perfect health partner! Leak-proof design | Better mixing every time | BPA FREE and SAFE | Easy to clean | Trendy look and easy to carry. Ergonomic Design, Durable & Lightweight, Ideal for Gym & Sports. ENERGY BOOST | MUSCLE SUPPORT | PERFORMANCE ENHANCER. MOVE BETTER, FEEL STRONGER, LIVE HEALTHIER. 100% Premium Quality. Healthy life, happy life.',
+    ingredients: 'BPA Free material (shaker bottle - not applicable).',
+    usage: 'Add protein or health drink powder and water/milk, close the lid and shake well. Suitable for gym and sports.',
+    precautions: 'Clean after every use. Avoid pouring hot liquids.',
+    manufacturer: 'IMC',
+    expiry: 'Not applicable',
+    images: [
+      {
+        src: createSvgPlaceholder('IMC Power Shaker', 'Wellness & Nutrition', '#047857', 'imc-power-shaker.jpg', '600 x 600 px'),
+        alt: 'IMC Power Shaker - Shalu Wellness Mart',
+        recommendedFilename: 'imc-power-shaker-01.jpg',
         recommendedSize: '600x600px'
       }
     ]
