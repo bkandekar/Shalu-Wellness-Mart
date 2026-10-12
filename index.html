@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  SHALU WELLNESS MART - CLIENT-RENDERED CATALOGUE (PHASE 1)
+  Hosting: GitHub Pages | Backend Ready: Supabase (Phase 2)
+  Designed & Developed by WEBORA
+  Design Theme: Boutique Botanical & Bio-Agriculture Marketplace
+  Note: This is a client-rendered catalogue where products and categories are dynamically
+  retrieved via app.js and products-data.js. All phone and WhatsApp links are injected from config.js.
+-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shalu Wellness Mart | Everyday Health, Wellness & Natural Living</title>
+  <meta name="description" content="Explore pure health, wellness, agriculture, and everyday care products at Shalu Wellness Mart. Direct WhatsApp ordering & personal store assistance.">
+  <link rel="canonical" href="index.html">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Shalu Wellness Mart | Everyday Health, Wellness & Natural Living">
+  <meta property="og:description" content="Explore pure health, wellness, agriculture, and everyday care products in one convenient destination.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Outfit (Headings) & Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Top Announcement Bar -->
+  <aside class="header-top-bar" aria-label="Store announcement">
+    <div class="container header-top-content">
+      <div class="header-top-tagline">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        <span data-config="tagline">Your Everyday Destination for Health, Wellness & Natural Living.</span>
+      </div>
+      <div class="header-top-actions">
+        <a href="#" data-config-href="tel" class="header-top-link" aria-label="Call store phone number">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span data-config="phoneDisplay">Loading...</span>
+        </a>
+        <a href="#" data-config-href="whatsapp" target="_blank" rel="noopener noreferrer" class="header-top-link" aria-label="Chat with store on WhatsApp">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67"/></svg>
+          <span>WhatsApp: <strong data-config="whatsappDisplay">...</strong></span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sticky Main Header -->
+  <header class="site-header">
+    <div class="container header-main">
+      <a href="index.html" class="brand-logo-group" aria-label="Shalu Wellness Mart Home">
+        <div class="brand-icon-emblem" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+        </div>
+        <div class="brand-text-block">
+          <span class="brand-title" data-config="brandName">Shalu Wellness Mart</span>
+          <span class="brand-subtext">Health • Wellness • Agriculture</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="shop.html#categories" class="nav-link">Categories</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Header Search & Cart Actions -->
+      <div class="header-actions">
+        <form class="header-search-form" action="shop.html" method="GET" role="search">
+          <label for="desktop-search-input" class="visually-hidden" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">Search products</label>
+          <input
+            id="desktop-search-input"
+            type="search"
+            name="search"
+            class="header-search-input"
+            placeholder="Search herbal, farm care..."
+            autocomplete="off"
+          >
+          <button type="submit" class="header-search-btn" aria-label="Submit search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+        </form>
+
+        <a href="cart.html" class="cart-icon-btn" aria-label="Shopping Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+          <span class="cart-count-badge badge-hidden" aria-live="polite">0</span>
+        </a>
+
+        <button
+          type="button"
+          id="mobile-menu-toggle"
+          class="mobile-menu-btn"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Toggle navigation menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav" class="mobile-nav-panel">
+      <form class="mobile-search-box header-search-form" action="shop.html" method="GET" role="search">
+        <label for="mobile-search-input" class="visually-hidden" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">Search products</label>
+        <div style="position: relative;">
+          <input
+            id="mobile-search-input"
+            type="search"
+            name="search"
+            class="header-search-input"
+            placeholder="Search wellness, agri, care..."
+            autocomplete="off"
+            style="width: 100%;"
+          >
+          <button type="submit" class="header-search-btn" aria-label="Submit search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+        </div>
+      </form>
+      <ul class="mobile-nav-links">
+        <li><a href="index.html" class="mobile-nav-link active">Home</a></li>
+        <li><a href="shop.html" class="mobile-nav-link">Shop All Products</a></li>
+        <li><a href="shop.html#categories" class="mobile-nav-link">Browse Categories</a></li>
+        <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
+        <li><a href="contact.html" class="mobile-nav-link">Contact & Support</a></li>
+        <li><a href="cart.html" class="mobile-nav-link">My Shopping Cart</a></li>
+      </ul>
+      <div class="mobile-nav-contact">
+        <a href="#" data-config-href="tel" class="btn btn-outline btn-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          Call: <span data-config="phoneDisplay">...</span>
+        </a>
+        <a href="#" data-config-href="whatsapp" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">
+          WhatsApp: <span data-config="whatsappDisplay">...</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="main-content">
+    <!-- SECTION 1: HERO (NEW BOTANICAL DESIGN) -->
+    <section class="hero-section" aria-labelledby="hero-heading">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-pill">
+            <span class="hero-badge-dot"></span>
+            <span>Direct WhatsApp Ordering Available</span>
+          </div>
+          
+          <h1 id="hero-heading" class="hero-title">
+            Wellness for You. <span class="hero-title-highlight">Care for Your World.</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Explore health, wellness, agriculture, and everyday care products in one convenient shopping destination. Verified batches, transparent pricing, and direct personal store assistance.
+          </p>
+
+          <div class="hero-actions">
+            <a href="shop.html" class="btn btn-primary btn-lg">
+              Explore All Products &rarr;
+            </a>
+            <a href="#" data-config-href="whatsapp" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.34C9.36 7.34 9.09 7.4 8.87 7.65C8.65 7.89 8.02 8.49 8.02 9.72C8.02 10.95 8.91 12.14 9.04 12.31C9.17 12.48 10.8 15 13.3 16.07C13.9 16.33 14.36 16.49 14.72 16.6C15.32 16.79 15.86 16.76 16.3 16.7C16.78 16.63 17.78 16.09 17.98 15.51C18.19 14.93 18.19 14.43 18.13 14.33C18.06 14.23 17.9 14.17 17.65 14.04C17.41 13.92 16.22 13.33 16 13.25C15.78 13.17 15.62 13.13 15.45 13.38C15.29 13.62 14.81 14.17 14.67 14.33C14.53 14.5 14.38 14.52 14.14 14.39C13.9 14.27 12.87 13.93 11.66 12.85C10.72 12.01 10.08 10.98 9.94 10.73C9.8 10.49 9.92 10.36 10.05 10.23C10.16 10.12 10.3 9.93 10.43 9.78C10.56 9.63 10.6 9.53 10.68 9.36C10.77 9.2 10.72 9.05 10.66 8.93C10.6 8.81 10.11 7.61 9.9 7.12C9.7 6.64 9.5 6.7 9.35 6.7C9.21 6.7 9.05 6.7 8.88 6.7L9.53 7.34Z"/></svg>
+              Order on WhatsApp
+            </a>
+          </div>
+
+          <div class="hero-features-bar">
+            <div class="hero-feature-item">
+              <div class="hero-feature-icon" aria-hidden="true">✓</div>
+              <span>WhatsApp Direct Checkout</span>
+            </div>
+            <div class="hero-feature-item">
+              <div class="hero-feature-icon" aria-hidden="true">✓</div>
+              <span>Clear Transparent Pricing</span>
+            </div>
+            <div class="hero-feature-item">
+              <div class="hero-feature-icon" aria-hidden="true">✓</div>
+              <span>Owner Assisted Service</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spotlight Card -->
+        <div class="hero-spotlight-card">
+          <div class="spotlight-header">
+            <span class="spotlight-tag">⭐ Featured Spotlight</span>
+            <span class="badge badge-in-stock">In Stock</span>
+          </div>
+          <div class="spotlight-media">
+            <!-- RECOMMENDED IMAGE: hero-spotlight.jpg | Size: 600x600px | Owner-supplied lifestyle photography -->
+            <img
+              src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20600%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3Crect%20width%3D%22600%22%20height%3D%22600%22%20fill%3D%22%23EEF6F0%22%20rx%3D%2214%22%2F%3E%3Ccircle%20cx%3D%22300%22%20cy%3D%22260%22%20r%3D%22110%22%20fill%3D%22%231B4332%22%20fill-opacity%3D%220.1%22%2F%3E%3Cpath%20d%3D%22M260%20300%20C260%20200%2C%20340%20200%2C%20340%20300%20Z%22%20fill%3D%22%231B4332%22%2F%3E%3Cpath%20d%3D%22M300%20220%20L300%20320%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%2F%3E%3Ctext%20x%3D%22300%22%20y%3D%22420%22%20font-family%3D%22'Outfit'%2C%20sans-serif%22%20font-size%3D%2222%22%20font-weight%3D%22800%22%20fill%3D%22%231B4332%22%20text-anchor%3D%22middle%22%3ESHALU%20WELLNESS%20MART%3C%2Ftext%3E%3Ctext%20x%3D%22300%22%20y%3D%22455%22%20font-family%3D%22'Inter'%2C%20sans-serif%22%20font-size%3D%2213%22%20fill%3D%22%234E6155%22%20text-anchor%3D%22middle%22%3EDemo%20Product%20%E2%80%A2%20hero-spotlight.jpg%20(600x600px)%3C%2Ftext%3E%3C%2Fsvg%3E"
+              alt="Shalu Wellness Mart curated botanical essentials"
+              class="spotlight-img"
+              width="600"
+              height="600"
+            />
+          </div>
+          <h2 class="spotlight-title">Herbal Daily Vitality Decoction</h2>
+          <p style="font-size: 0.8125rem; color: var(--color-secondary-text); margin-bottom: 0.85rem;">
+            Standardized botanical herbal extract designed for regular lifestyle nourishment and refreshment.
+          </p>
+          <div class="spotlight-meta">
+            <span class="spotlight-price">₹380</span>
+            <span class="spotlight-mrp">₹450</span>
+            <span class="badge badge-discount">16% OFF</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+            <a href="product.html?slug=herbal-daily-vitality-decoction" class="btn btn-secondary btn-sm">
+              View Details
+            </a>
+            <button type="button" class="btn btn-primary btn-sm add-to-cart-btn" data-id="prod-001">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SHOP BY CATEGORY -->
+    <section id="categories-section" class="section section-white" aria-labelledby="cat-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Curated Selections</span>
+          <h2 id="cat-heading" class="section-title">Shop by Category</h2>
+          <p class="section-subtitle">
+            Browse our dedicated collections formulated for personal health, everyday living, and agricultural crops.
+          </p>
+        </div>
+
+        <div class="category-grid" id="category-cards-container">
+          <!-- Rendered dynamically from CONFIG via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: 3-STEP WHATSAPP ORDERING WORKFLOW -->
+    <section class="section section-warm" style="padding-top: 1rem; padding-bottom: 2rem;">
+      <div class="container">
+        <div class="workflow-section">
+          <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+            <span class="section-kicker">Direct & Easy</span>
+            <h2 class="section-title" style="font-size: 1.75rem;">How WhatsApp Ordering Works</h2>
+            <p class="section-subtitle">
+              We make shopping simple, personal, and transparent in three easy steps.
+            </p>
+          </div>
+
+          <div class="workflow-grid">
+            <div class="workflow-step-card">
+              <div class="workflow-step-number">1</div>
+              <h3 class="workflow-step-title">Select Your Products</h3>
+              <p class="workflow-step-text">
+                Explore our catalogue, select items for wellness or farming, and adjust quantities in your cart.
+              </p>
+            </div>
+
+            <div class="workflow-step-card">
+              <div class="workflow-step-number">2</div>
+              <h3 class="workflow-step-title">Enter Delivery Details</h3>
+              <p class="workflow-step-text">
+                Provide your destination name, address, and city on the checkout screen to structure your request.
+              </p>
+            </div>
+
+            <div class="workflow-step-card">
+              <div class="workflow-step-number">3</div>
+              <h3 class="workflow-step-title">Confirm with Shalu</h3>
+              <p class="workflow-step-text">
+                Click to send your formatted order directly on WhatsApp. Store management will confirm stock & delivery!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: FEATURED PRODUCTS -->
+    <section class="section section-soft" aria-labelledby="featured-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Handpicked Items</span>
+          <h2 id="featured-heading" class="section-title">Featured Products</h2>
+          <p class="section-subtitle">
+            Explore our most requested products across botanical health, farm nutrition, and personal care.
+          </p>
+        </div>
+
+        <div class="product-grid" id="featured-products-container">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2.75rem;">
+          <a href="shop.html" class="btn btn-outline btn-lg">Browse Complete Shop &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: WHY SHOP WITH US -->
+    <section class="section section-white" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Our Principles</span>
+          <h2 id="why-heading" class="section-title">Why Shop With Us</h2>
+          <p class="section-subtitle">
+            A sincere, straightforward shopping experience focused on clarity, accessibility, and personal care.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-box">
+            <div class="feature-box-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            </div>
+            <h3 class="feature-box-title">Easy Shopping</h3>
+            <p class="feature-box-desc">
+              Browse effortlessly across well-organized categories from your phone, tablet, or desktop with instant search.
+            </p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-box-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </div>
+            <h3 class="feature-box-title">Clear Product Information</h3>
+            <p class="feature-box-desc">
+              Review ingredients, directions for use, usage precautions, and pricing transparently before ordering.
+            </p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-box-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </div>
+            <h3 class="feature-box-title">Convenient Ordering</h3>
+            <p class="feature-box-desc">
+              Add products to your cart and place direct enquiries on WhatsApp with automatically structured order details.
+            </p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-box-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </div>
+            <h3 class="feature-box-title">Customer Assistance</h3>
+            <p class="feature-box-desc">
+              Direct assistance from the store owner to answer product questions, clarify availability, and confirm orders.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: SPECIAL OFFERS -->
+    <section class="section section-soft" aria-labelledby="offers-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Honest Savings</span>
+          <h2 id="offers-heading" class="section-title">Special Offers</h2>
+          <p class="section-subtitle">
+            Products currently available at real discounts below their Maximum Retail Price (MRP).
+          </p>
+        </div>
+
+        <div class="product-grid" id="special-offers-container">
+          <!-- Rendered dynamically for products with MRP > Price -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: PROMOTIONAL SPLIT BANNERS -->
+    <section class="section section-white" aria-labelledby="agri-promo-heading">
+      <div class="container">
+        <!-- Agriculture Promo -->
+        <div class="promo-banner" style="margin-bottom: 2.5rem;">
+          <div>
+            <span class="section-kicker">Agriculture & Soil Health</span>
+            <h2 id="agri-promo-heading" class="section-title">Care for Your Plants. Support Your Growing Needs.</h2>
+            <p class="section-subtitle" style="margin-bottom: 1.75rem;">
+              Explore our line of agricultural tonics, bio-enzymes, and cold-pressed botanical sprays designed to support balanced soil vitality and plant foliage.
+            </p>
+            <a href="shop.html?cat=agriculture" class="btn btn-primary btn-lg">Explore Agriculture Products &rarr;</a>
+          </div>
+          <div class="promo-media">
+            <!-- RECOMMENDED IMAGE: promo-agriculture.jpg | Size: 700x500px -->
+            <img
+              src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20700%20500%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3Crect%20width%3D%22700%22%20height%3D%22500%22%20fill%3D%22%23EEF6F0%22%2F%3E%3Cpath%20d%3D%22M350%20160%20C280%20220%2C%20280%20340%2C%20350%20380%20C420%20340%2C%20420%20220%2C%20350%20160%20Z%22%20fill%3D%22%232D6A4F%22%2F%3E%3Cpath%20d%3D%22M350%20180%20L350%20360%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%223%22%2F%3E%3Ctext%20x%3D%22350%22%20y%3D%22420%22%20font-family%3D%22'Outfit'%2C%20sans-serif%22%20font-size%3D%2222%22%20font-weight%3D%22800%22%20fill%3D%22%231B4332%22%20text-anchor%3D%22middle%22%3EAGRICULTURE%20%26%20FARM%20CARE%3C%2Ftext%3E%3Ctext%20x%3D%22350%22%20y%3D%22450%22%20font-family%3D%22'Inter'%2C%20sans-serif%22%20font-size%3D%2213%22%20fill%3D%22%234E6155%22%20text-anchor%3D%22middle%22%3EDemo%20Placeholder%20%E2%80%A2%20promo-agriculture.jpg%20(700x500px)%3C%2Ftext%3E%3C%2Fsvg%3E"
+              alt="Agriculture and crop care products - Shalu Wellness Mart"
+              class="promo-img"
+              loading="lazy"
+              width="700"
+              height="500"
+            >
+          </div>
+        </div>
+
+        <!-- Wellness Promo -->
+        <div class="promo-banner">
+          <div class="promo-media" style="order: 2;">
+            <!-- RECOMMENDED IMAGE: promo-wellness.jpg | Size: 700x500px -->
+            <img
+              src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20700%20500%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3Crect%20width%3D%22700%22%20height%3D%22500%22%20fill%3D%22%23FAF7F2%22%2F%3E%3Ccircle%20cx%3D%22350%22%20cy%3D%22240%22%20r%3D%22100%22%20fill%3D%22%2340916C%22%20fill-opacity%3D%220.18%22%2F%3E%3Cpath%20d%3D%22M310%20240%20C310%20190%2C%20390%20190%2C%20390%20240%20C390%20290%2C%20310%20290%2C%20310%20240%20Z%22%20fill%3D%22%2340916C%22%2F%3E%3Ctext%20x%3D%22350%22%20y%3D%22390%22%20font-family%3D%22'Outfit'%2C%20sans-serif%22%20font-size%3D%2222%22%20font-weight%3D%22800%22%20fill%3D%22%231B4332%22%20text-anchor%3D%22middle%22%3EEVERYDAY%20WELLNESS%20NUTRITION%3C%2Ftext%3E%3Ctext%20x%3D%22350%22%20y%3D%22420%22%20font-family%3D%22'Inter'%2C%20sans-serif%22%20font-size%3D%2213%22%20fill%3D%22%234E6155%22%20text-anchor%3D%22middle%22%3EDemo%20Placeholder%20%E2%80%A2%20promo-wellness.jpg%20(700x500px)%3C%2Ftext%3E%3C%2Fsvg%3E"
+              alt="Everyday wellness essentials - Shalu Wellness Mart"
+              class="promo-img"
+              loading="lazy"
+              width="700"
+              height="500"
+            >
+          </div>
+          <div style="order: 1;">
+            <span class="section-kicker">Nutrition & Balance</span>
+            <h2 id="wellness-promo-heading" class="section-title">Explore Everyday Wellness Essentials.</h2>
+            <p class="section-subtitle" style="margin-bottom: 1.75rem;">
+              Wholesome herbal decoctions, roasted seed blends, and gentle personal care options selected to support your family's daily vitality.
+            </p>
+            <a href="shop.html?cat=wellness-nutrition" class="btn btn-primary btn-lg">Shop Wellness Products &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: ABOUT OVERVIEW -->
+    <section class="section section-soft" aria-labelledby="about-overview-heading">
+      <div class="container container-narrow" style="text-align: center;">
+        <span class="section-kicker">About Our Destination</span>
+        <h2 id="about-overview-heading" class="section-title">About Shalu Wellness Mart</h2>
+        <p class="section-subtitle" style="margin-bottom: 1.5rem;">
+          Shalu Wellness Mart is an online shopping destination offering products across health, wellness, agriculture, personal care, and everyday living categories.
+        </p>
+        <p style="color: var(--color-secondary-text); margin-bottom: 2rem; line-height: 1.7;">
+          Managed by Shalu Srivastava, we strive to bring accessible botanical solutions, clean household formulations, and dependable farming essentials to our community with transparent information and personalized customer service.
+        </p>
+        <a href="about.html" class="btn btn-outline btn-lg">Read Our Complete Story &rarr;</a>
+      </div>
+    </section>
+
+    <!-- SECTION 9: CUSTOMER SUPPORT & ENQUIRY -->
+    <section class="section section-white" aria-labelledby="support-heading">
+      <div class="container container-narrow" style="text-align: center;">
+        <span class="section-kicker">Here to Help</span>
+        <h2 id="support-heading" class="section-title">Need Direct Assistance With Your Order?</h2>
+        <p class="section-subtitle" style="margin-bottom: 2rem;">
+          Have questions about product details, batch availability, or dispatch to your pincode? Contact us directly.
+        </p>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem;">
+          <a href="#" data-config-href="tel" class="btn btn-primary btn-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call Store: <span data-config="phoneDisplay">...</span>
+          </a>
+          <a href="#" data-config-href="whatsapp" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67"/></svg>
+            WhatsApp: <span data-config="whatsappDisplay">...</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SECTION 10: FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <!-- Col 1: Brand Info -->
+      <div>
+        <h3 class="footer-heading" data-config="brandName">Shalu Wellness Mart</h3>
+        <p class="footer-text">
+          Your Everyday Destination for Health, Wellness & Natural Living. Convenient product catalogue with direct WhatsApp ordering assistance.
+        </p>
+        <p class="footer-text">
+          Owner: <strong style="color: #FFFFFF;" data-config="owner">Shalu Srivastava</strong>
+        </p>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div>
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="shop.html" class="footer-link">All Products</a></li>
+          <li><a href="cart.html" class="footer-link">Shopping Cart</a></li>
+          <li><a href="about.html" class="footer-link">About Us</a></li>
+          <li><a href="contact.html" class="footer-link">Contact Store</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Categories -->
+      <div>
+        <h3 class="footer-heading">Categories</h3>
+        <ul class="footer-links">
+          <li><a href="shop.html?cat=health-care" class="footer-link">Health Care</a></li>
+          <li><a href="shop.html?cat=wellness-nutrition" class="footer-link">Wellness & Nutrition</a></li>
+          <li><a href="shop.html?cat=agriculture" class="footer-link">Agriculture</a></li>
+          <li><a href="shop.html?cat=beauty-personal-care" class="footer-link">Beauty & Personal Care</a></li>
+          <li><a href="shop.html?cat=home-lifestyle" class="footer-link">Home & Lifestyle</a></li>
+          <li><a href="shop.html?cat=gardening-plant-care" class="footer-link">Gardening & Plant Care</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Contact & Policies -->
+      <div>
+        <h3 class="footer-heading">Store Contact</h3>
+        <div class="footer-contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <div>
+            <span>Call: </span>
+            <a href="#" data-config-href="tel" data-config="phoneDisplay">...</a>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67"/></svg>
+          <div>
+            <span>WhatsApp: </span>
+            <a href="#" data-config-href="whatsapp" target="_blank" rel="noopener noreferrer" data-config="whatsappDisplay">...</a>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span data-config="address">A/P: Tunga, Tal: Sangli, Dist: Miraj</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <a href="#" data-config-href="email" data-config="email">...</a>
+        </div>
+        <ul class="footer-links" style="margin-top: 1rem;">
+          <li><a href="shipping-policy.html" class="footer-link">Shipping Policy</a></li>
+          <li><a href="refund-policy.html" class="footer-link">Refund & Cancellation</a></li>
+          <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          <li><a href="terms.html" class="footer-link">Terms & Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Developer Credit -->
+    <div class="container footer-bottom">
+      <div>
+        &copy; <span id="current-year">2026</span> <span data-config="brandName">Shalu Wellness Mart</span>. All rights reserved.
+      </div>
+      <div class="footer-credit" data-config="developerCredit">
+        Designed & Developed by WEBORA
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="products-data.js"></script>
+  <script src="app.js"></script>
+  <script src="cart.js"></script>
+  <script>
+    // Initialize Homepage Dynamic Content
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Set current year
+      const yearEl = document.getElementById('current-year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // 1. Render Categories Grid
+      const catContainer = document.getElementById('category-cards-container');
+      if (catContainer && window.CONFIG && window.CONFIG.categories) {
+        catContainer.innerHTML = window.CONFIG.categories.map(cat => `
+          <div class="category-card">
+            <div class="category-card-media">
+              <!-- RECOMMENDED IMAGE: category-${cat.slug}.jpg | Size: 600x450px -->
+              <img
+                src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20450%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3Crect%20width%3D%22600%22%20height%3D%22450%22%20fill%3D%22${encodeURIComponent(cat.bgLight)}%22%2F%3E%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%2270%22%20fill%3D%22${encodeURIComponent(cat.color)}%22%20fill-opacity%3D%220.15%22%2F%3E%3Cpath%20d%3D%22M270%20200%20C270%20160%2C%20330%20160%2C%20330%20200%20C330%20240%2C%20270%20240%2C%20270%20200%20Z%22%20fill%3D%22${encodeURIComponent(cat.color)}%22%2F%3E%3Ctext%20x%3D%22300%22%20y%3D%22320%22%20font-family%3D%22'Outfit'%2C%20sans-serif%22%20font-size%3D%2222%22%20font-weight%3D%22800%22%20fill%3D%22${encodeURIComponent(cat.color)}%22%20text-anchor%3D%22middle%22%3E${encodeURIComponent(cat.name)}%3C%2Ftext%3E%3Ctext%20x%3D%22300%22%20y%3D%22350%22%20font-family%3D%22'Inter'%2C%20sans-serif%22%20font-size%3D%2212%22%20fill%3D%22%234E6155%22%20text-anchor%3D%22middle%22%3EDemo%20Placeholder%20%E2%80%A2%20category-${cat.slug}.jpg%3C%2Ftext%3E%3C%2Fsvg%3E"
+                alt="${cat.name} category - Shalu Wellness Mart"
+                class="category-card-img"
+                loading="lazy"
+                width="600"
+                height="450"
+              />
+            </div>
+            <h3 class="category-card-title">${cat.name}</h3>
+            <p class="category-card-desc">${cat.description}</p>
+            <a href="shop.html?cat=${encodeURIComponent(cat.slug)}" class="category-card-link">
+              Explore Collection &rarr;
+            </a>
+          </div>
+        `).join('');
+      }
+
+      // 2. Render Featured Products (4 products)
+      const featuredContainer = document.getElementById('featured-products-container');
+      if (featuredContainer && window.getProducts) {
+        const featured = await window.getProducts({ featured: true });
+        const itemsToDisplay = featured.slice(0, 4);
+        if (itemsToDisplay.length) {
+          featuredContainer.innerHTML = itemsToDisplay.map(p => window.renderProductCard(p)).join('');
+        } else {
+          featuredContainer.innerHTML = '<p class="empty-state-text">Featured products will be updated soon.</p>';
+        }
+      }
+
+      // 3. Render Special Offers (only products with MRP > Price)
+      const offersContainer = document.getElementById('special-offers-container');
+      if (offersContainer && window.getProducts) {
+        const offers = await window.getProducts({ offersOnly: true });
+        const itemsToDisplay = offers.slice(0, 4);
+        if (itemsToDisplay.length) {
+          offersContainer.innerHTML = itemsToDisplay.map(p => window.renderProductCard(p)).join('');
+        } else {
+          offersContainer.innerHTML = '<p class="empty-state-text">No active special discounts at this time.</p>';
+        }
+      }
+    });
+  </script>
+</body>
+</html>

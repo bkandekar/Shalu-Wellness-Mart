@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  SHALU WELLNESS MART - SHOPPING CART
+  Hosting: GitHub Pages | Developed by WEBORA
+-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Shopping Cart | Shalu Wellness Mart</title>
+  <meta name="description" content="Review your selected wellness, health, and agricultural products before proceeding to checkout.">
+  <link rel="canonical" href="cart.html">
+
+  <meta property="og:title" content="Your Shopping Cart | Shalu Wellness Mart">
+  <meta property="og:description" content="Review your selected wellness products before checkout.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Top Announcement Bar -->
+  <aside class="header-top-bar" aria-label="Store announcement">
+    <div class="container header-top-content">
+      <div class="header-top-tagline">
+        <span data-config="tagline">Your Everyday Destination for Health, Wellness & Natural Living.</span>
+      </div>
+      <div class="header-top-actions">
+        <a href="#" data-config-href="tel" class="header-top-link" aria-label="Call store phone number">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span data-config="phoneDisplay">...</span>
+        </a>
+        <a href="#" data-config-href="whatsapp" target="_blank" rel="noopener noreferrer" class="header-top-link" aria-label="WhatsApp enquiries">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67"/></svg>
+          <span>WhatsApp Enquiries</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-main">
+      <a href="index.html" class="brand-logo-group" aria-label="Shalu Wellness Mart Home">
+        <div class="brand-icon-emblem" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+        </div>
+        <div class="brand-text-block">
+          <span class="brand-title" data-config="brandName">Shalu Wellness Mart</span>
+          <span class="brand-subtext">Health • Wellness • Agriculture</span>
+        </div>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="cart.html" class="cart-icon-btn active" aria-label="Shopping Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+          <span class="cart-count-badge badge-hidden" aria-live="polite">0</span>
+        </a>
+
+        <button
+          type="button"
+          id="mobile-menu-toggle"
+          class="mobile-menu-btn"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Toggle navigation menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-nav" class="mobile-nav-panel">
+      <ul class="mobile-nav-links">
+        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="shop.html" class="mobile-nav-link">Shop All Products</a></li>
+        <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
+        <li><a href="contact.html" class="mobile-nav-link">Contact & Support</a></li>
+        <li><a href="cart.html" class="mobile-nav-link active">My Shopping Cart</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main-content" class="main-content">
+    <section class="section section-soft" style="padding-top: 2.5rem; padding-bottom: 4rem;">
+      <div class="container">
+        <div class="section-header-left">
+          <span class="section-kicker">Order Review</span>
+          <h1 class="section-title">Your Shopping Cart</h1>
+        </div>
+
+        <div id="cart-content-mount">
+          <!-- Populated by JavaScript -->
+          <div class="skeleton-card" style="height: 300px;"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div>
+        <h3 class="footer-heading" data-config="brandName">Shalu Wellness Mart</h3>
+        <p class="footer-text">
+          Your Everyday Destination for Health, Wellness & Natural Living.
+        </p>
+        <p class="footer-text">
+          Owner: <strong style="color: #FFFFFF;" data-config="owner">Shalu Srivastava</strong>
+        </p>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="shop.html" class="footer-link">All Products</a></li>
+          <li><a href="cart.html" class="footer-link">Shopping Cart</a></li>
+          <li><a href="about.html" class="footer-link">About Us</a></li>
+          <li><a href="contact.html" class="footer-link">Contact Store</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Store Contact</h3>
+        <div class="footer-contact-item">
+          <span>Call: </span>
+          <a href="#" data-config-href="tel" data-config="phoneDisplay">...</a>
+        </div>
+        <div class="footer-contact-item">
+          <span>WhatsApp: </span>
+          <a href="#" data-config-href="whatsapp" target="_blank" rel="noopener noreferrer" data-config="whatsappDisplay">...</a>
+        </div>
+        <div class="footer-contact-item">
+          <span data-config="address">...</span>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Customer Policies</h3>
+        <ul class="footer-links">
+          <li><a href="shipping-policy.html" class="footer-link">Shipping Policy</a></li>
+          <li><a href="refund-policy.html" class="footer-link">Refund & Cancellation</a></li>
+          <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+          <li><a href="terms.html" class="footer-link">Terms & Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>
+        &copy; <span id="current-year">2026</span> <span data-config="brandName">Shalu Wellness Mart</span>. All rights reserved.
+      </div>
+      <div class="footer-credit" data-config="developerCredit">
+        Designed & Developed by WEBORA
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="products-data.js"></script>
+  <script src="app.js"></script>
+  <script src="cart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const yearEl = document.getElementById('current-year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      const mount = document.getElementById('cart-content-mount');
+
+      async function renderCart() {
+        if (!window.Cart) return;
+
+        const items = await window.Cart.getHydratedCart();
+
+        if (!items || items.length === 0) {
+          mount.innerHTML = `
+            <div class="empty-state-card">
+              <svg style="margin: 0 auto 1.5rem; color: var(--color-primary);" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="8" cy="21" r="1"></circle>
+                <circle cx="19" cy="21" r="1"></circle>
+                <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+              </svg>
+              <h2 class="empty-state-title">Your Cart is Empty</h2>
+              <p class="empty-state-text">You haven't added any wellness or agricultural products to your cart yet.</p>
+              <a href="shop.html" class="btn btn-primary btn-lg">Shop Now</a>
+            </div>
+          `;
+          return;
+        }
+
+        const subtotal = items.reduce((sum, item) => sum + item.lineTotal, 0);
+
+        mount.innerHTML = `
+          <div class="cart-layout-grid">
+            <!-- Left: Items Table / List -->
+            <div class="cart-table-wrapper">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--color-border);">
+                <span style="font-weight: 700; font-size: 1rem;">Items (${items.length})</span>
+                <button type="button" id="clear-all-cart-btn" class="cart-remove-btn" style="cursor: pointer;">
+                  Clear All Items
+                </button>
+              </div>
+
+              <div class="cart-items-list">
+                ${items.map(item => `
+                  <div class="cart-item-row" data-id="${item.id}">
+                    <!-- RECOMMENDED IMAGE: ${item.recommendedFilename || 'product.jpg'} -->
+                    <img
+                      src="${item.image}"
+                      alt="${item.imageAlt || item.name}"
+                      class="cart-item-thumb"
+                      width="72"
+                      height="72"
+                    />
+
+                    <div class="cart-item-info">
+                      <a href="product.html?slug=${encodeURIComponent(item.slug)}" class="cart-item-name">
+                        ${item.name}
+                      </a>
+                      <span class="cart-item-price">
+                        Unit Price: ${window.CONFIG.formatPrice(item.price)}
+                      </span>
+                      <span style="font-size: 0.75rem; color: var(--color-secondary-text);">
+                        Brand: ${item.brand}
+                      </span>
+                    </div>
+
+                    <div class="cart-item-controls">
+                      <span class="cart-item-subtotal">
+                        ${window.CONFIG.formatPrice(item.lineTotal)}
+                      </span>
+                      
+                      <!-- Quantity Adjuster -->
+                      <div class="qty-selector" style="transform: scale(0.9); transform-origin: right center;">
+                        <button type="button" class="qty-btn cart-qty-minus" data-id="${item.id}" aria-label="Decrease quantity">-</button>
+                        <input
+                          type="number"
+                          class="qty-input cart-qty-input"
+                          data-id="${item.id}"
+                          value="${item.quantity}"
+                          min="1"
+                          max="${item.stock}"
+                          readonly
+                          aria-label="Quantity for ${item.name}"
+                        />
+                        <button type="button" class="qty-btn cart-qty-plus" data-id="${item.id}" aria-label="Increase quantity" ${item.quantity >= item.stock ? 'disabled' : ''}>+</button>
+                      </div>
+
+                      <button type="button" class="cart-remove-btn item-remove-btn" data-id="${item.id}">
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+
+              <div style="margin-top: 1.5rem; display: flex; justify-content: flex-start;">
+                <a href="shop.html" class="btn btn-outline btn-sm">
+                  &larr; Continue Shopping
+                </a>
+              </div>
+            </div>
+
+            <!-- Right: Order Summary Card -->
+            <div class="order-summary-card">
+              <h2 class="summary-title">Order Summary</h2>
+
+              <div class="summary-row">
+                <span>Product Subtotal</span>
+                <strong>${window.CONFIG.formatPrice(subtotal)}</strong>
+              </div>
+
+              <div class="summary-row" style="color: var(--color-secondary-text); font-size: 0.875rem;">
+                <span>Delivery Charges</span>
+                <span style="font-style: italic;">To Be Confirmed</span>
+              </div>
+
+              <div class="summary-row summary-row-total">
+                <span>Estimated Total</span>
+                <span>${window.CONFIG.formatPrice(subtotal)}*</span>
+              </div>
+
+              <p style="font-size: 0.75rem; color: var(--color-secondary-text); margin: 0.5rem 0 1.5rem;">
+                *Final total and delivery charges will be confirmed by the store upon reviewing your order location.
+              </p>
+
+              <a href="checkout.html" class="btn btn-primary btn-lg" style="width: 100%;">
+                Proceed to Checkout &rarr;
+              </a>
+            </div>
+          </div>
+        `;
+
+        attachEventListeners();
+      }
+
+      function attachEventListeners() {
+        // Minus quantity
+        mount.querySelectorAll('.cart-qty-minus').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            const id = btn.getAttribute('data-id');
+            const input = mount.querySelector(`.cart-qty-input[data-id="${id}"]`);
+            if (input) {
+              const current = parseInt(input.value, 10) || 1;
+              await window.Cart.updateQuantity(id, current - 1);
+              renderCart();
+            }
+          });
+        });
+
+        // Plus quantity
+        mount.querySelectorAll('.cart-qty-plus').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            const id = btn.getAttribute('data-id');
+            const input = mount.querySelector(`.cart-qty-input[data-id="${id}"]`);
+            if (input) {
+              const current = parseInt(input.value, 10) || 1;
+              await window.Cart.updateQuantity(id, current + 1);
+              renderCart();
+            }
+          });
+        });
+
+        // Remove item
+        mount.querySelectorAll('.item-remove-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-id');
+            window.Cart.removeItem(id);
+            renderCart();
+          });
+        });
+
+        // Clear all
+        const clearAll = document.getElementById('clear-all-cart-btn');
+        if (clearAll) {
+          clearAll.addEventListener('click', () => {
+            if (confirm('Are you sure you want to remove all items from your cart?')) {
+              window.Cart.clearCart();
+              renderCart();
+            }
+          });
+        }
+      }
+
+      renderCart();
+    });
+  </script>
+</body>
+</html>

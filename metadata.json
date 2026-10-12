@@ -1,0 +1,6 @@
+{
+  "name": "Shalu Wellness Mart",
+  "description": "Your Everyday Destination for Health, Wellness & Natural Living.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
