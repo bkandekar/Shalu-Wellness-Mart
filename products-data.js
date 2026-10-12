@@ -406,9 +406,9 @@ const PRODUCTS_DATA = [
     precautions: '*Results may vary from person to person. Read the instructions on the product pack. Store in a cool, dry place.',
     manufacturer: 'IMC Herbal (Since 2006)',
     expiry: 'Please check the date printed on the pack',
-    images: [
+        images: [
       {
-        src: createSvgPlaceholder('IMC Fat Away 60 Tablets', 'Health Care', '#166534', 'imc-fat-away.jpg', '600 x 600 px'),
+        src: 'images/imc-fat-away-01.webp',
         alt: 'IMC Fat Away 60 Tablets - Shalu Wellness Mart',
         recommendedFilename: 'imc-fat-away-01.webp',
         recommendedSize: '600x600px'
