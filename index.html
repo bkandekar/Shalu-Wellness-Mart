@@ -600,7 +600,7 @@
       const featuredContainer = document.getElementById('featured-products-container');
       if (featuredContainer && window.getProducts) {
         const featured = await window.getProducts({ featured: true });
-        const itemsToDisplay = featured.slice(0, 4);
+        const itemsToDisplay = featured.slice(0, 8);
         if (itemsToDisplay.length) {
           featuredContainer.innerHTML = itemsToDisplay.map(p => window.renderProductCard(p)).join('');
         } else {
