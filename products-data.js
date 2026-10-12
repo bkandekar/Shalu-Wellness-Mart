@@ -410,7 +410,7 @@ const PRODUCTS_DATA = [
       {
         src: createSvgPlaceholder('IMC Fat Away 60 Tablets', 'Health Care', '#166534', 'imc-fat-away.jpg', '600 x 600 px'),
         alt: 'IMC Fat Away 60 Tablets - Shalu Wellness Mart',
-        recommendedFilename: 'imc-fat-away-01.jpg',
+        recommendedFilename: 'imc-fat-away-01.webp',
         recommendedSize: '600x600px'
       }
     ]
