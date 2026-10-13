@@ -481,9 +481,9 @@ const PRODUCTS_DATA = [
     expiry: 'कृपया पैक पर छपी तारीख देखें',
         images: [
       {
-        src: 'images/imc-shri-tulsi-01.jpg',
+        src: 'images/imc-shri-tulsi-01.webp',
         alt: 'IMC श्री तुलसी ड्रॉप 20ml पैक - Shalu Wellness Mart',
-        recommendedFilename: 'imc-shri-tulsi-01.jpg',
+        recommendedFilename: 'imc-shri-tulsi-01.webp',
         recommendedSize: '600x600px'
       }
     ]
@@ -526,9 +526,9 @@ const PRODUCTS_DATA = [
     expiry: 'कृपया पैक पर छपी तारीख देखें',
         images: [
       {
-        src: 'images/imc-activator-500ml-01.jpg',
+        src: 'images/imc-activator-500ml-01.webp',
         alt: 'IMC एक्टिवेटर वेटर-स्प्रेडर 500ml - Shalu Wellness Mart',
-        recommendedFilename: 'imc-activator-500ml-01.jpg',
+        recommendedFilename: 'imc-activator-500ml-01.webp',
         recommendedSize: '600x600px'
       }
     ]
