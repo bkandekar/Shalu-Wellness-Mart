@@ -615,13 +615,14 @@ const PRODUCTS_DATA = [
     tags: ['पावरशेकर', 'जिमशेकर', 'प्रोटीनशेकर', 'IMC'],
     manufacturer: 'IMC',
     expiry: 'लागू नहीं',
-    images: [
+        images: [
       {
-        src: createSvgPlaceholder('IMC Power Shaker', 'Wellness & Nutrition', '#047857', 'imc-power-shaker.webp', '600 x 600 px'),
+        src: 'images/imc-power-shaker-01.webp',
         alt: 'IMC पावर शेकर बॉटल - Shalu Wellness Mart',
         recommendedFilename: 'imc-power-shaker-01.webp',
         recommendedSize: '600x600px'
       }
+    ]
     ]
   }
 ];
