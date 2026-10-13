@@ -1,67 +1,70 @@
 /**
- * SHALU WELLNESS MART - CONFIGURATION (SINGLE SOURCE OF TRUTH)
+ * SHALU WELLNESS MART - CONFIGURATION (SINGLE SOURCE OF TRUTH) - हिंदी संस्करण
  * All brand info, contact numbers, address, and developer credits are defined here.
  * No phone or WhatsApp numbers should be hard-coded in HTML or other scripts.
+ *
+ * हिंदी बदलाव: ब्रांड नाम, मालिक, टैगलाइन, पता, श्रेणियों के नाम/विवरण और WhatsApp का डिफ़ॉल्ट मेसेज।
+ * श्रेणियों के id और slug नहीं बदले हैं, ताकि फ़िल्टर और लिंक काम करते रहें।
  */
 const CONFIG = {
-  brandName: 'Shalu Wellness Mart',
-  owner: 'Shalu Srivastava',
-  tagline: 'Your Everyday Destination for Health, Wellness & Natural Living.',
+  brandName: 'शालू वेलनेस मार्ट',
+  owner: 'शालू श्रीवास्तव',
+  tagline: 'स्वास्थ्य, वेलनेस और प्राकृतिक जीवन के लिए आपकी रोज़ की मंज़िल।',
   phoneDisplay: '9226680953',
   phoneTel: '+919226680953',
   whatsappDisplay: '+91 7275874168',
   whatsappNumber: '917275874168',
-  address: 'A/P: Tunga, Tal: Sangli, Dist: Miraj',
+  address: 'ए/पी: तुंगा, ता. सांगली, जिला मिरज',
   email: 'shalushrivastava1234@gmail.com',
-  developerCredit: 'Designed & Developed by WEBORA',
+  developerCredit: 'डिज़ाइन व डेवलपमेंट: WEBORA',
   developerUrl: '#',
   currencySymbol: '₹',
   categories: [
     {
       id: 'health-care',
       slug: 'health-care',
-      name: 'Health Care',
-      description: 'Everyday personal health and vitality essentials for the family.',
+      name: 'हेल्थ केयर',
+      description: 'पूरे परिवार की रोज़ की सेहत और ताकत के लिए ज़रूरी उत्पाद।',
       color: '#166534',
       bgLight: '#F0FDF4'
     },
     {
       id: 'wellness-nutrition',
       slug: 'wellness-nutrition',
-      name: 'Wellness & Nutrition',
-      description: 'Daily nutritional boosters, wholesome herbal blends, and lifestyle vitality.',
+      name: 'वेलनेस व न्यूट्रिशन',
+      description: 'रोज़ का पोषण, पौष्टिक हर्बल मिश्रण और स्वस्थ जीवनशैली के उत्पाद।',
       color: '#047857',
       bgLight: '#ECFDF5'
     },
     {
       id: 'agriculture',
       slug: 'agriculture',
-      name: 'Agriculture',
-      description: 'Eco-conscious crop nourishment and plant care items for farms.',
+      name: 'कृषि',
+      description: 'खेतों के लिए पर्यावरण के अनुकूल फसल पोषण और पौध-सुरक्षा उत्पाद।',
       color: '#15803D',
       bgLight: '#F0FDF4'
     },
     {
       id: 'beauty-personal-care',
       slug: 'beauty-personal-care',
-      name: 'Beauty & Personal Care',
-      description: 'Gentle skin, hair, and body care crafted for daily routine hygiene.',
+      name: 'ब्यूटी व पर्सनल केयर',
+      description: 'रोज़ की देखभाल के लिए त्वचा, बाल और शरीर के कोमल उत्पाद।',
       color: '#0F766E',
       bgLight: '#F0FDFA'
     },
     {
       id: 'home-lifestyle',
       slug: 'home-lifestyle',
-      name: 'Home & Lifestyle',
-      description: 'Clean living products and gentle home essentials for natural harmony.',
+      name: 'होम व लाइफस्टाइल',
+      description: 'स्वच्छ घर और प्राकृतिक वातावरण के लिए ज़रूरी घरेलू उत्पाद।',
       color: '#1E3A8A',
       bgLight: '#EFF6FF'
     },
     {
       id: 'gardening-plant-care',
       slug: 'gardening-plant-care',
-      name: 'Gardening & Plant Care',
-      description: 'Potted plant feeds, soil revitalizers, and home garden greenery support.',
+      name: 'बागवानी व पौधों की देखभाल',
+      description: 'गमलों के पौधों का पोषण, मिट्टी सुधारक और घर के बगीचे के लिए उत्पाद।',
       color: '#4D7C0F',
       bgLight: '#F7FEE7'
     }
@@ -69,7 +72,7 @@ const CONFIG = {
 
   // Utility to generate WhatsApp Chat URL with optional pre-filled message
   getWhatsAppUrl(customMessage) {
-    const text = customMessage ? encodeURIComponent(customMessage) : encodeURIComponent(`Hello Shalu Wellness Mart, I would like to enquire about your products.`);
+    const text = customMessage ? encodeURIComponent(customMessage) : encodeURIComponent(`नमस्ते शालू वेलनेस मार्ट, मैं आपके उत्पादों के बारे में जानना चाहता/चाहती हूं।`);
     return `https://wa.me/${this.whatsappNumber}?text=${text}`;
   },
 
