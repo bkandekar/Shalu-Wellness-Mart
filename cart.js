@@ -1,8 +1,11 @@
 /**
- * SHALU WELLNESS MART - CART MODULE (SINGLE CART SCRIPT)
+ * SHALU WELLNESS MART - CART MODULE (SINGLE CART SCRIPT) - हिंदी संस्करण
  * Stores only product ID and quantity in localStorage.
  * Always resolves prices, stock, and status dynamically from the data layer.
  * Caps quantity at actual stock and purges inactive/zero-stock items upon loading.
+ *
+ * हिंदी बदलाव: सभी टोस्ट मेसेज और aria-label हिंदी में।
+ * कार्ट में उत्पाद का नाम हिंदी (nameHi) में दिखता है, अगर उपलब्ध हो।
  */
 
 const CART_STORAGE_KEY = 'shalu_wellness_cart_v1';
@@ -58,17 +61,19 @@ const Cart = {
       }
       if (validQty < 1) validQty = 1;
 
+      const displayName = product.nameHi || product.name;
+
       hydrated.push({
         id: product.id,
         slug: product.slug,
-        name: product.name,
+        name: displayName,
         brand: product.brand || 'Brand TBD',
         price: product.price,
         mrp: product.mrp,
         stock: product.stock,
         quantity: validQty,
         image: (product.images && product.images[0]) ? product.images[0].src : '',
-        imageAlt: (product.images && product.images[0]) ? product.images[0].alt : product.name,
+        imageAlt: (product.images && product.images[0]) ? product.images[0].alt : displayName,
         recommendedFilename: (product.images && product.images[0]) ? product.images[0].recommendedFilename : 'product.jpg',
         category: product.category,
         lineTotal: product.price * validQty
@@ -89,7 +94,7 @@ const Cart = {
     const product = allProducts.find(p => p.id === productId);
 
     if (!product || product.stock <= 0) {
-      if (window.showToast) window.showToast('Sorry, this product is currently out of stock.', 'error');
+      if (window.showToast) window.showToast('क्षमा करें, यह उत्पाद अभी स्टॉक में नहीं है।', 'error');
       return false;
     }
 
@@ -102,11 +107,11 @@ const Cart = {
     if (newQty > product.stock) {
       newQty = product.stock;
       if (window.showToast) {
-        window.showToast(`Maximum available stock (${product.stock}) reached for this item.`, 'warning');
+        window.showToast(`इस उत्पाद का अधिकतम उपलब्ध स्टॉक (${product.stock}) पूरा हो गया है।`, 'warning');
       }
     } else {
       if (notify && window.showToast) {
-        window.showToast(`"${product.name}" added to your cart.`, 'success');
+        window.showToast(`"${product.nameHi || product.name}" आपके कार्ट में जोड़ दिया गया है।`, 'success');
       }
     }
 
@@ -132,13 +137,13 @@ const Cart = {
 
     if (newQuantity <= 0) {
       raw.splice(index, 1);
-      if (window.showToast) window.showToast('Item removed from cart.', 'info');
+      if (window.showToast) window.showToast('उत्पाद कार्ट से हटा दिया गया।', 'info');
     } else {
       const maxStock = product ? product.stock : 99;
       if (newQuantity > maxStock) {
         newQuantity = maxStock;
         if (window.showToast) {
-          window.showToast(`Only ${maxStock} units available in stock.`, 'warning');
+          window.showToast(`स्टॉक में केवल ${maxStock} नग उपलब्ध हैं।`, 'warning');
         }
       }
       raw[index].quantity = newQuantity;
@@ -152,7 +157,7 @@ const Cart = {
     let raw = this.getRawItems();
     raw = raw.filter(item => item.id !== productId);
     this.saveRawItems(raw);
-    if (window.showToast) window.showToast('Item removed from cart.', 'info');
+    if (window.showToast) window.showToast('उत्पाद कार्ट से हटा दिया गया।', 'info');
   },
 
   // Clear entire cart
@@ -171,7 +176,7 @@ const Cart = {
     const count = this.getCartCount();
     document.querySelectorAll('.cart-count-badge').forEach(badge => {
       badge.textContent = count;
-      badge.setAttribute('aria-label', `${count} items in shopping cart`);
+      badge.setAttribute('aria-label', `शॉपिंग कार्ट में ${count} उत्पाद`);
       if (count > 0) {
         badge.classList.remove('badge-hidden');
       } else {
