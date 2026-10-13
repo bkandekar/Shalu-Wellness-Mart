@@ -479,7 +479,7 @@ const PRODUCTS_DATA = [
     tags: ['तुलसीड्रॉप', 'आयुर्वेद', 'इम्युनिटी', 'IMC'],
     manufacturer: 'IMC Herbal (Since 2006)',
     expiry: 'कृपया पैक पर छपी तारीख देखें',
-        images: [
+    images: [
       {
         src: 'images/imc-shri-tulsi-01.webp',
         alt: 'IMC श्री तुलसी ड्रॉप 20ml पैक - Shalu Wellness Mart',
@@ -524,7 +524,7 @@ const PRODUCTS_DATA = [
     tags: ['एक्टिवेटर', 'वेटरस्प्रेडर', 'खेती', 'IMC'],
     manufacturer: 'IMC',
     expiry: 'कृपया पैक पर छपी तारीख देखें',
-        images: [
+    images: [
       {
         src: 'images/imc-activator-500ml-01.webp',
         alt: 'IMC एक्टिवेटर वेटर-स्प्रेडर 500ml - Shalu Wellness Mart',
@@ -570,11 +570,11 @@ const PRODUCTS_DATA = [
     tags: ['डिटर्जेंटपाउडर', 'वाशिंगपाउडर', 'IMC'],
     manufacturer: 'IMC',
     expiry: 'कृपया पैक पर छपी तारीख देखें',
-        images: [
+    images: [
       {
-        src: 'images/imc-detergent-1kg-01.jpg',
+        src: 'images/imc-detergent-1kg-01.webp',
         alt: 'IMC डिटर्जेंट पाउडर 1 Kg - Shalu Wellness Mart',
-        recommendedFilename: 'imc-detergent-1kg-01.jpg',
+        recommendedFilename: 'imc-detergent-1kg-01.webp',
         recommendedSize: '600x600px'
       }
     ]
@@ -615,7 +615,7 @@ const PRODUCTS_DATA = [
     tags: ['पावरशेकर', 'जिमशेकर', 'प्रोटीनशेकर', 'IMC'],
     manufacturer: 'IMC',
     expiry: 'लागू नहीं',
-        images: [
+    images: [
       {
         src: 'images/imc-power-shaker-01.webp',
         alt: 'IMC पावर शेकर बॉटल - Shalu Wellness Mart',
@@ -623,7 +623,6 @@ const PRODUCTS_DATA = [
         recommendedSize: '600x600px'
       }
     ]
-    
   }
 ];
 
