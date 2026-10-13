@@ -619,7 +619,7 @@ const PRODUCTS_DATA = [
       {
         src: createSvgPlaceholder('IMC Power Shaker', 'Wellness & Nutrition', '#047857', 'imc-power-shaker.jpg', '600 x 600 px'),
         alt: 'IMC पावर शेकर बॉटल - Shalu Wellness Mart',
-        recommendedFilename: 'imc-power-shaker-01.jpg',
+        recommendedFilename: 'imc-power-shaker-01.webp',
         recommendedSize: '600x600px'
       }
     ]
