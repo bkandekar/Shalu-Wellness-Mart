@@ -1,9 +1,15 @@
 /**
  * SHALU WELLNESS MART - PRODUCTS DATA (PHASE 1 DATA STORE)
  * 12 Clearly Labelled Demo Products + 5 Real IMC Products Across 6 Categories.
- * Fields: id, name, slug, category, brand, mrp, price, stock,
+ *
+ * Core fields: id, name, slug, category, brand, mrp, price, stock,
  * shortDescription, description, ingredients, usage, precautions,
  * manufacturer, expiry, featured, active, images.
+ *
+ * NEW optional fields (used by the 5 IMC products, Hindi SEO content):
+ * nameHi, features[], seoTitle, metaDescription, keywords[], tags[], crops[],
+ * disclaimer, language.
+ * The site code can read these when present and ignore them when absent.
  */
 
 // Helper function to create clean inline SVG placeholders in category theme
@@ -33,6 +39,10 @@ function createSvgPlaceholder(title, categoryName, primaryColor, recommendedFile
 }
 
 const PRODUCTS_DATA = [
+  // ============================================================
+  // DEMO PRODUCTS (12) - clearly labelled isDemo: true
+  // ============================================================
+
   // Category 1: Health Care
   {
     id: 'prod-001',
@@ -382,14 +392,17 @@ const PRODUCTS_DATA = [
   },
 
   // ============================================================
-  // REAL IMC PRODUCTS (descriptions taken from product creatives, in English)
+  // REAL IMC PRODUCTS (5) - Hindi SEO-friendly content
   // NOTE: mrp / price / stock are PLACEHOLDERS - update with real values.
+  // NOTE: Slugs are kept unchanged so existing product URLs keep working.
   // ============================================================
 
   // IMC - Health Care: Fat Away
   {
     id: 'prod-013',
     name: 'IMC Fat Away (60 Tablets)',
+    nameHi: 'IMC फैट अवे (60 टैबलेट)',
+    language: 'hi',
     slug: 'imc-fat-away-60-tablets',
     category: 'health-care',
     brand: 'IMC',
@@ -399,17 +412,31 @@ const PRODUCTS_DATA = [
     isDemo: false,
     featured: true,
     active: true,
-    shortDescription: 'FAT AWAY - Your Fitness Partner. Natural formula, better results. Take daily, stay fit always!',
-    description: 'Staying fit just got easier! Say goodbye to fat and hello to yourself! FAT AWAY - Your Fitness Partner. Helps with weight management: helps reduce excess fat stored in the body. Boosts metabolism: helps the body burn more energy by improving metabolism. Controls appetite: helps reduce unnecessary hunger and cravings. Boosts energy: keeps you energetic and active all day. Natural and safe: made from natural ingredients, without any harm. See better changes in just 60 days!* Why choose FAT AWAY? Natural ingredients | No side effects | Scientifically developed formula | Trusted quality | Trusted by thousands of satisfied customers. Fit body, healthy life - start today! Get a better, lighter and healthier life!',
-    ingredients: 'Made from natural ingredients (natural formula). Please see the product pack for the complete ingredient list.',
-    usage: 'Take daily and stay fit always! (Stay Fit & Light). Dosage as per the information printed on the product pack.',
-    precautions: '*Results may vary from person to person. Read the instructions on the product pack. Store in a cool, dry place.',
+    seoTitle: 'IMC फैट अवे 60 टैबलेट – वजन नियंत्रण में सहायक',
+    metaDescription: 'IMC फैट अवे टैबलेट वजन कम करने, मेटाबॉलिज्म और ऊर्जा बढ़ाने में सहायक। प्राकृतिक फॉर्मूला, 60 टैबलेट का पैक। आज ही ऑर्डर करें।',
+    shortDescription: 'IMC फैट अवे प्राकृतिक फॉर्मूले से बना सप्लीमेंट है, जो वजन नियंत्रण, मेटाबॉलिज्म और ऊर्जा में सहायक है। 60 टैबलेट का पैक।',
+    description: 'फिट रहना अब और आसान! IMC फैट अवे आपका फिटनेस पार्टनर है। यह प्राकृतिक फॉर्मूला शरीर में जमा अतिरिक्त चर्बी को कम करने में मदद करता है और मेटाबॉलिज्म बढ़ाकर ऊर्जा खर्च करने में सहायक है। यह अनावश्यक भूख और क्रेविंग को कम करने में भी मदद करता है और दिनभर ऊर्जा और एक्टिव बनाए रखता है। संतुलित आहार और नियमित व्यायाम के साथ रोज़ लेने पर लगभग 60 दिनों में बेहतर बदलाव देखने को मिल सकता है।*',
+    features: [
+      'वजन कम करने में सहायक',
+      'मेटाबॉलिज्म बढ़ाए',
+      'भूख को नियंत्रित करे',
+      'ऊर्जा बढ़ाए',
+      'प्राकृतिक सामग्री',
+      'वैज्ञानिक रूप से तैयार फॉर्मूला',
+      'भरोसेमंद गुणवत्ता'
+    ],
+    ingredients: 'प्राकृतिक सामग्री से बना (प्राकृतिक फॉर्मूला)। पूरी सामग्री सूची के लिए कृपया प्रोडक्ट पैक देखें।',
+    usage: 'रोज़ लें और फिट रहें। मात्रा पैक पर छपी जानकारी के अनुसार लें।',
+    precautions: 'पैक पर दिए गए निर्देश पढ़ें। ठंडी और सूखी जगह पर रखें। बच्चों की पहुंच से दूर रखें। उपयोग से पहले डॉक्टर से सलाह लें।',
+    disclaimer: '*परिणाम व्यक्ति के अनुसार अलग हो सकते हैं। उपयोग से पहले डॉक्टर से सलाह लें।',
+    keywords: ['फैट अवे टैबलेट', 'वजन कम करने की टैबलेट', 'वेट मैनेजमेंट सप्लीमेंट', 'मेटाबॉलिज्म बूस्टर', 'प्राकृतिक वेट लॉस', 'IMC फैट अवे'],
+    tags: ['फैटअवे', 'वेटमैनेजमेंट', 'फिटनेस', 'IMC'],
     manufacturer: 'IMC Herbal (Since 2006)',
-    expiry: 'Please check the date printed on the pack',
-        images: [
+    expiry: 'कृपया पैक पर छपी तारीख देखें',
+    images: [
       {
         src: 'images/imc-fat-away-01.webp',
-        alt: 'IMC Fat Away 60 Tablets - Shalu Wellness Mart',
+        alt: 'IMC फैट अवे 60 टैबलेट - Shalu Wellness Mart',
         recommendedFilename: 'imc-fat-away-01.webp',
         recommendedSize: '600x600px'
       }
@@ -420,6 +447,8 @@ const PRODUCTS_DATA = [
   {
     id: 'prod-014',
     name: 'IMC Shri Tulsi Drops (20 ml)',
+    nameHi: 'IMC श्री तुलसी ड्रॉप (20 ml)',
+    language: 'hi',
     slug: 'imc-shri-tulsi-drops-20ml',
     category: 'health-care',
     brand: 'IMC',
@@ -429,17 +458,31 @@ const PRODUCTS_DATA = [
     isDemo: false,
     featured: true,
     active: true,
-    shortDescription: 'WORLD BEST Tulsi Drops - a wonderful blend of 5 types of Tulsi. One drop, many benefits!',
-    description: 'Tulsi Drops - a wonderful blend of 5 types of Tulsi. 5 Types of Tulsi: Shyam Tulsi (boosts immunity), Ram Tulsi (beneficial in cold and cough), Vishnu Tulsi (reduces stress), Nimbu Tulsi (improves digestion), Van Tulsi (detoxifies the body). Natural protection, a companion for a healthy life: boosts immunity, strengthens the respiratory system, improves digestive strength, reduces stress and brings peace of mind. One drop, many benefits! Helpful in cold and flu, useful for sore throat, boosts immunity, improves digestion, beneficial in gas and indigestion, gives relief from stress and fatigue. 100% Natural & Safe. Ayurvedic Trusted Formula. Pure Ayurvedic | No side effects | Safe for all ages. Healthy family, happy life.',
-    ingredients: 'Extract of 5 Types of Tulsi - Shyam Tulsi, Ram Tulsi, Vishnu Tulsi, Nimbu Tulsi, Van Tulsi.',
-    usage: 'Dosage as per the information printed on the product pack.',
-    precautions: 'Store in a cool, dry place. Keep the dropper tip clean and dry. Keep out of reach of children.',
+    seoTitle: 'IMC श्री तुलसी ड्रॉप 20ml – 5 प्रकार की तुलसी का अर्क',
+    metaDescription: 'IMC श्री तुलसी ड्रॉप में है 5 प्रकार की तुलसी का अर्क। इम्युनिटी, श्वसन तंत्र और पाचन के लिए आयुर्वेदिक फॉर्मूला। सभी उम्र के लिए।',
+    shortDescription: 'IMC श्री तुलसी ड्रॉप में श्याम, राम, विष्णु, नींबू और वन तुलसी का अर्क है। यह प्राकृतिक आयुर्वेदिक फॉर्मूला इम्युनिटी बढ़ाने और स्वस्थ जीवन में सहायक है।',
+    description: 'एक बूंद, अनेक फायदे! IMC श्री तुलसी ड्रॉप 5 प्रकार की तुलसी का अद्भुत संगम है। IMC Herbal का यह आयुर्वेदिक फॉर्मूला परिवार की रोज़ की सेहत का साथी है। श्याम तुलसी इम्युनिटी बढ़ाए, राम तुलसी सर्दी-खांसी में लाभकारी, विष्णु तुलसी तनाव कम करे, नींबू तुलसी पाचन को दुरुस्त करे और वन तुलसी शरीर को डिटॉक्स करे। 100% नेचुरल, शुद्ध आयुर्वेदिक और सभी उम्र के लिए सुरक्षित। स्वस्थ परिवार, खुशहाल जीवन।',
+    features: [
+      'इम्युनिटी बढ़ाने में सहायक',
+      'श्वसन तंत्र को मजबूत करे',
+      'पाचन शक्ति बढ़ाए',
+      'तनाव कम करे, मन को शांति दे',
+      'सर्दी-जुकाम और गले की खराश में उपयोगी',
+      'गैस-अपच में लाभकारी',
+      'तनाव और थकान में राहत',
+      '100% नेचुरल, शुद्ध आयुर्वेदिक'
+    ],
+    ingredients: '5 प्रकार की तुलसी का अर्क: श्याम तुलसी, राम तुलसी, विष्णु तुलसी, नींबू तुलसी, वन तुलसी।',
+    usage: 'मात्रा पैक पर छपी जानकारी के अनुसार लें।',
+    precautions: 'ठंडी और सूखी जगह पर रखें। ड्रॉपर की नोक साफ और सूखी रखें। बच्चों की पहुंच से दूर रखें।',
+    keywords: ['तुलसी ड्रॉप', 'तुलसी अर्क', 'श्री तुलसी', '5 प्रकार की तुलसी', 'इम्युनिटी बूस्टर ड्रॉप', 'आयुर्वेदिक ड्रॉप', 'सर्दी खांसी की आयुर्वेदिक दवा', 'IMC हर्बल'],
+    tags: ['तुलसीड्रॉप', 'आयुर्वेद', 'इम्युनिटी', 'IMC'],
     manufacturer: 'IMC Herbal (Since 2006)',
-    expiry: 'Please check the date printed on the pack',
+    expiry: 'कृपया पैक पर छपी तारीख देखें',
     images: [
       {
         src: createSvgPlaceholder('IMC Shri Tulsi Drops 20ml', 'Health Care', '#166534', 'imc-shri-tulsi-drops.jpg', '600 x 600 px'),
-        alt: 'IMC Shri Tulsi Drops 20ml - Shalu Wellness Mart',
+        alt: 'IMC श्री तुलसी ड्रॉप 20ml पैक - Shalu Wellness Mart',
         recommendedFilename: 'imc-shri-tulsi-01.jpg',
         recommendedSize: '600x600px'
       }
@@ -450,6 +493,8 @@ const PRODUCTS_DATA = [
   {
     id: 'prod-015',
     name: 'IMC Activator Wetter-Spreader (500 ml)',
+    nameHi: 'IMC एक्टिवेटर वेटर-स्प्रेडर (500 ml)',
+    language: 'hi',
     slug: 'imc-activator-wetter-spreader-500ml',
     category: 'agriculture',
     brand: 'IMC',
@@ -459,17 +504,30 @@ const PRODUCTS_DATA = [
     isDemo: false,
     featured: true,
     active: true,
-    shortDescription: 'The impact of every drop, a glow in your crop - better spread, higher yield. Research Based - Silicon Technology.',
-    description: 'ACTIVATOR Wetter-Spreader - Research Based, Silicon Technology. The impact of every drop, a glow in your crop. Better spread, higher yield. Better spread: mixes with water and spreads evenly on every leaf. Increases adhesion: keeps the spray solution stuck on the leaves for greater effect. Boosts effectiveness: multiplies the effect of pesticides, fungicides and nutrients. Increases yield: ensures healthy plants, better growth and higher produce. Useful for all crops: paddy, wheat, sugarcane, cotton, vegetables, fruit plants. Low dose, high impact | Safe and reliable | Better results, the farmer\'s identity | Research-based silicon technology. The first choice of the smart farmer - with ACTIVATOR, your crop will be magnificent!',
-    ingredients: 'Research Based Silicon Technology (Wetter-Spreader). Please see the product pack for the complete ingredient list.',
-    usage: 'Mix 1-2 ml of ACTIVATOR per 15 litres of water and spray. Use mixed with pesticide / fungicide / nutrients.',
-    precautions: 'For agricultural use only. Keep out of reach of children and pets. Read the instructions on the pack before use.',
+    seoTitle: 'IMC एक्टिवेटर वेटर-स्प्रेडर 500ml – सिलिकॉन टेक्नोलॉजी',
+    metaDescription: 'IMC एक्टिवेटर वेटर-स्प्रेडर से कीटनाशक, फफूंदनाशक और पोषक तत्वों का असर बढ़ाएं। बेहतर फैलाव, ज्यादा चिपकाव। सभी फसलों के लिए उपयोगी।',
+    shortDescription: 'IMC एक्टिवेटर रिसर्च बेस्ड सिलिकॉन टेक्नोलॉजी पर आधारित वेटर-स्प्रेडर है। यह छिड़काव को हर पत्ती पर समान रूप से फैलाता है और चिपकाए रखता है, जिससे कम मात्रा में अधिक असर मिलता है।',
+    description: 'हर बूंद का असर, फसल में निखार। IMC एक्टिवेटर एक रिसर्च बेस्ड वेटर-स्प्रेडर है, जो सिलिकॉन टेक्नोलॉजी से बना है। पानी में मिलाने पर यह घोल को हर पत्ती पर समान रूप से फैलाता है और पत्तियों पर चिपकाए रखता है, जिससे कीटनाशक, फफूंदनाशक और पोषक तत्वों का असर कई गुना बढ़ता है। इसे धान, गेहूं, गन्ना, कपास, सब्जियां और फलदार पौधों, यानी सभी फसलों में इस्तेमाल किया जा सकता है। स्मार्ट किसान की पहली पसंद।',
+    features: [
+      'बेहतर फैलाव: हर पत्ती पर समान रूप से फैलता है',
+      'चिपकाव बढ़ाए: घोल पत्तियों पर टिका रहता है',
+      'प्रभावशीलता बढ़ाए: दवा और पोषक तत्वों का असर बढ़ता है',
+      'उपज में वृद्धि में सहायक: स्वस्थ पौधे, बेहतर विकास',
+      'कम मात्रा, अधिक प्रभाव',
+      'रिसर्च आधारित सिलिकॉन टेक्नोलॉजी'
+    ],
+    crops: ['धान', 'गेहूं', 'गन्ना', 'कपास', 'सब्जियां', 'फलदार पौधे'],
+    ingredients: 'रिसर्च बेस्ड सिलिकॉन टेक्नोलॉजी (वेटर-स्प्रेडर)। पूरी सामग्री सूची के लिए कृपया प्रोडक्ट पैक देखें।',
+    usage: '1–2 ml एक्टिवेटर प्रति 15 लीटर पानी में मिलाकर छिड़काव करें। इसे कीटनाशक, फफूंदनाशक या पोषक तत्व के साथ मिलाकर उपयोग करें।',
+    precautions: 'केवल कृषि उपयोग के लिए। बच्चों और पालतू जानवरों की पहुंच से दूर रखें। उपयोग से पहले पैक पर दिए निर्देश पढ़ें।',
+    keywords: ['वेटर स्प्रेडर', 'स्प्रेडर स्टिकर', 'सिलिकॉन स्प्रेडर', 'कीटनाशक का असर बढ़ाने वाला', 'फसल स्प्रे एडजुवेंट', 'IMC एक्टिवेटर', 'खेती के उत्पाद ऑनलाइन'],
+    tags: ['एक्टिवेटर', 'वेटरस्प्रेडर', 'खेती', 'IMC'],
     manufacturer: 'IMC',
-    expiry: 'Please check the date printed on the pack',
+    expiry: 'कृपया पैक पर छपी तारीख देखें',
     images: [
       {
         src: createSvgPlaceholder('IMC Activator Wetter-Spreader', 'Agriculture', '#15803D', 'imc-activator-500ml.jpg', '600 x 600 px'),
-        alt: 'IMC Activator Wetter-Spreader 500ml - Shalu Wellness Mart',
+        alt: 'IMC एक्टिवेटर वेटर-स्प्रेडर 500ml - Shalu Wellness Mart',
         recommendedFilename: 'imc-activator-500ml-01.jpg',
         recommendedSize: '600x600px'
       }
@@ -480,6 +538,8 @@ const PRODUCTS_DATA = [
   {
     id: 'prod-016',
     name: 'IMC Detergent Powder (1 Kg)',
+    nameHi: 'IMC डिटर्जेंट पाउडर (1 Kg)',
+    language: 'hi',
     slug: 'imc-detergent-powder-1kg',
     category: 'home-lifestyle',
     brand: 'IMC',
@@ -489,17 +549,31 @@ const PRODUCTS_DATA = [
     isDemo: false,
     featured: false,
     active: true,
-    shortDescription: 'Cleanliness you can see, fragrance that stays! Enriched With Powerful Stain Remover.',
-    description: 'NEW Detergent Powder - cleanliness you can see, fragrance that stays! Enriched With Powerful Stain Remover. Removes stains easily: removes tough stains in the best way. Fragrance that lasts long: gives your clothes a feeling of freshness and fragrance. Suitable for both machine and hand wash: great for every type of wash. Protects your clothes: maintains the color and quality of the fabric. More cleaning in less quantity. Helps remove up to 99% germs | A better choice for the environment | More foam, powerful cleaning | Economical and useful. Better cleaning every time. Clean clothes, healthy family.',
-    ingredients: 'Enriched With Powerful Stain Remover. Please see the product pack for the complete ingredient list.',
-    usage: 'Suitable for both machine wash and hand wash. Quantity to be used as per the instructions on the pack.',
-    precautions: 'Keep out of reach of children. Avoid contact with eyes. Store in a dry place.',
+    seoTitle: 'IMC डिटर्जेंट पाउडर 1 Kg – दाग हटाए, खुशबू रहे',
+    metaDescription: 'IMC डिटर्जेंट पाउडर 1 Kg: पावरफुल स्टेन रिमूवर, लंबे समय तक खुशबू, मशीन और हाथ दोनों के लिए उपयुक्त। कम मात्रा में ज्यादा सफाई।',
+    shortDescription: 'IMC डिटर्जेंट पाउडर में पावरफुल स्टेन रिमूवर है, जो कठिन दाग हटाता है और कपड़ों में ताज़गी भरी खुशबू छोड़ता है। मशीन और हाथ दोनों के लिए उपयुक्त।',
+    description: 'सफाई जो दिखे, खुशबू जो रहे! IMC डिटर्जेंट पाउडर पावरफुल स्टेन रिमूवर से भरपूर है और कठिन दागों को बेहतरीन तरीके से हटाता है। इसकी खुशबू लंबे समय तक कपड़ों में ताज़गी बनाए रखती है। ज्यादा झाग से सफाई दमदार होती है, और कम मात्रा में ज्यादा सफाई मिलने से यह किफायती भी है। मशीन और हाथ, दोनों धुलाई के लिए बेहतरीन, और रंग व कपड़े की क्वालिटी को बनाए रखता है। स्वच्छ कपड़े, स्वस्थ परिवार।',
+    features: [
+      'दाग आसानी से हटाए',
+      'खुशबू लंबे समय तक रहे',
+      'मशीन और हाथ दोनों के लिए उपयुक्त',
+      'कपड़ों को सुरक्षा, रंग और क्वालिटी बरकरार',
+      'कम मात्रा में ज्यादा सफाई',
+      'ज्यादा झाग, दमदार सफाई',
+      'किफायती और उपयोगी',
+      'पर्यावरण के लिए बेहतर विकल्प'
+    ],
+    ingredients: 'पावरफुल स्टेन रिमूवर से भरपूर। पूरी सामग्री सूची के लिए कृपया प्रोडक्ट पैक देखें।',
+    usage: 'मशीन वॉश और हैंड वॉश दोनों के लिए उपयुक्त। मात्रा पैक पर दिए निर्देशों के अनुसार लें।',
+    precautions: 'बच्चों की पहुंच से दूर रखें। आंखों के संपर्क से बचें। सूखी जगह पर रखें।',
+    keywords: ['डिटर्जेंट पाउडर', 'कपड़े धोने का पाउडर', 'स्टेन रिमूवर डिटर्जेंट', 'वाशिंग पाउडर 1 kg', 'खुशबूदार डिटर्जेंट', 'IMC डिटर्जेंट'],
+    tags: ['डिटर्जेंटपाउडर', 'वाशिंगपाउडर', 'IMC'],
     manufacturer: 'IMC',
-    expiry: 'Please check the date printed on the pack',
+    expiry: 'कृपया पैक पर छपी तारीख देखें',
     images: [
       {
         src: createSvgPlaceholder('IMC Detergent Powder 1 Kg', 'Home & Lifestyle', '#1E3A8A', 'imc-detergent-1kg.jpg', '600 x 600 px'),
-        alt: 'IMC Detergent Powder 1 Kg - Shalu Wellness Mart',
+        alt: 'IMC डिटर्जेंट पाउडर 1 Kg - Shalu Wellness Mart',
         recommendedFilename: 'imc-detergent-1kg-01.jpg',
         recommendedSize: '600x600px'
       }
@@ -510,6 +584,8 @@ const PRODUCTS_DATA = [
   {
     id: 'prod-017',
     name: 'IMC Power Shaker',
+    nameHi: 'IMC पावर शेकर',
+    language: 'hi',
     slug: 'imc-power-shaker',
     category: 'wellness-nutrition',
     brand: 'IMC',
@@ -519,17 +595,30 @@ const PRODUCTS_DATA = [
     isDemo: false,
     featured: false,
     active: true,
-    shortDescription: 'Energy in every sip, every day with POWER SHAKER - your perfect health partner! 100% Premium Quality.',
-    description: 'Energy in every sip, make every day a POWER SHAKER day - your perfect health partner! Leak-proof design | Better mixing every time | BPA FREE and SAFE | Easy to clean | Trendy look and easy to carry. Ergonomic Design, Durable & Lightweight, Ideal for Gym & Sports. ENERGY BOOST | MUSCLE SUPPORT | PERFORMANCE ENHANCER. MOVE BETTER, FEEL STRONGER, LIVE HEALTHIER. 100% Premium Quality. Healthy life, happy life.',
-    ingredients: 'BPA Free material (shaker bottle - not applicable).',
-    usage: 'Add protein or health drink powder and water/milk, close the lid and shake well. Suitable for gym and sports.',
-    precautions: 'Clean after every use. Avoid pouring hot liquids.',
+    seoTitle: 'IMC पावर शेकर बॉटल – लीक प्रूफ, BPA फ्री जिम शेकर',
+    metaDescription: 'जिम और स्पोर्ट्स के लिए IMC पावर शेकर खरीदें। लीक प्रूफ डिज़ाइन, बेहतर मिक्सिंग, BPA फ्री और आसान सफाई। हर घूँट में एनर्जी पाएं।',
+    shortDescription: 'IMC पावर शेकर एक ट्रेंडी, हल्का और टिकाऊ शेकर है, जो जिम और स्पोर्ट्स के लिए बनाया गया है। इसका लीक प्रूफ ढक्कन और बेहतर मिक्सिंग डिज़ाइन हर बार स्मूद शेक तैयार करता है।',
+    description: 'हर घूँट में एनर्जी चाहिए, तो IMC पावर शेकर आपका परफेक्ट हेल्थ पार्टनर है। यह BPA फ्री और सुरक्षित मटीरियल से बना है, इसलिए रोज़ इस्तेमाल के लिए भरोसेमंद है। इसका एर्गोनोमिक डिज़ाइन हाथ में आसानी से पकड़ में आता है और वज़न में हल्का होने से जिम बैग में रखना आसान है। लीक प्रूफ ढक्कन से सफर में भी बैग गीला होने की चिंता नहीं रहती। बेहतर मिक्सिंग डिज़ाइन से पाउडर गुठलियों के बिना घुलता है, और सफाई भी आसान है। जिम जाने वालों, खिलाड़ियों और फिटनेस पसंद करने वालों के लिए एक स्टाइलिश साथी।',
+    features: [
+      'लीक प्रूफ डिज़ाइन',
+      'हर बार बेहतर मिक्सिंग',
+      '100% BPA फ्री और सुरक्षित',
+      'आसान सफाई',
+      'एर्गोनोमिक, टिकाऊ और हल्का',
+      'जिम और स्पोर्ट्स के लिए आदर्श',
+      'ट्रेंडी लुक, आसान कैरी'
+    ],
+    ingredients: 'BPA फ्री मटीरियल (शेकर बोतल - लागू नहीं)।',
+    usage: 'प्रोटीन या हेल्थ ड्रिंक पाउडर और पानी/दूध डालें, ढक्कन बंद करें और अच्छी तरह हिलाएं। जिम और स्पोर्ट्स के लिए उपयुक्त।',
+    precautions: 'हर इस्तेमाल के बाद साफ करें। गर्म तरल पदार्थ डालने से बचें।',
+    keywords: ['पावर शेकर', 'जिम शेकर बॉटल', 'प्रोटीन शेकर', 'BPA फ्री शेकर', 'लीक प्रूफ शेकर बॉटल', 'IMC शेकर', 'स्पोर्ट्स शेकर', 'शेकर बोतल ऑनलाइन'],
+    tags: ['पावरशेकर', 'जिमशेकर', 'प्रोटीनशेकर', 'IMC'],
     manufacturer: 'IMC',
-    expiry: 'Not applicable',
+    expiry: 'लागू नहीं',
     images: [
       {
         src: createSvgPlaceholder('IMC Power Shaker', 'Wellness & Nutrition', '#047857', 'imc-power-shaker.jpg', '600 x 600 px'),
-        alt: 'IMC Power Shaker - Shalu Wellness Mart',
+        alt: 'IMC पावर शेकर बॉटल - Shalu Wellness Mart',
         recommendedFilename: 'imc-power-shaker-01.jpg',
         recommendedSize: '600x600px'
       }
