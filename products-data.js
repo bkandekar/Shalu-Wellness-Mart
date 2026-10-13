@@ -481,9 +481,9 @@ const PRODUCTS_DATA = [
     expiry: 'कृपया पैक पर छपी तारीख देखें',
     images: [
       {
-        src: createSvgPlaceholder('IMC Shri Tulsi Drops 20ml', 'Health Care', '#166534', 'imc-shri-tulsi-drops.jpg', '600 x 600 px'),
+        src: createSvgPlaceholder('IMC Shri Tulsi Drops 20ml', 'Health Care', '#166534', 'imc-shri-tulsi-drops.webp', '600 x 600 px'),
         alt: 'IMC श्री तुलसी ड्रॉप 20ml पैक - Shalu Wellness Mart',
-        recommendedFilename: 'imc-shri-tulsi-01.jpg',
+        recommendedFilename: 'imc-shri-tulsi-01.webp',
         recommendedSize: '600x600px'
       }
     ]
@@ -526,9 +526,9 @@ const PRODUCTS_DATA = [
     expiry: 'कृपया पैक पर छपी तारीख देखें',
     images: [
       {
-        src: createSvgPlaceholder('IMC Activator Wetter-Spreader', 'Agriculture', '#15803D', 'imc-activator-500ml.jpg', '600 x 600 px'),
+        src: createSvgPlaceholder('IMC Activator Wetter-Spreader', 'Agriculture', '#15803D', 'imc-activator-500ml.webp', '600 x 600 px'),
         alt: 'IMC एक्टिवेटर वेटर-स्प्रेडर 500ml - Shalu Wellness Mart',
-        recommendedFilename: 'imc-activator-500ml-01.jpg',
+        recommendedFilename: 'imc-activator-500ml-01.webp',
         recommendedSize: '600x600px'
       }
     ]
@@ -572,9 +572,9 @@ const PRODUCTS_DATA = [
     expiry: 'कृपया पैक पर छपी तारीख देखें',
     images: [
       {
-        src: createSvgPlaceholder('IMC Detergent Powder 1 Kg', 'Home & Lifestyle', '#1E3A8A', 'imc-detergent-1kg.jpg', '600 x 600 px'),
+        src: createSvgPlaceholder('IMC Detergent Powder 1 Kg', 'Home & Lifestyle', '#1E3A8A', 'imc-detergent-1kg.webp', '600 x 600 px'),
         alt: 'IMC डिटर्जेंट पाउडर 1 Kg - Shalu Wellness Mart',
-        recommendedFilename: 'imc-detergent-1kg-01.jpg',
+        recommendedFilename: 'imc-detergent-1kg-01.webp',
         recommendedSize: '600x600px'
       }
     ]
