@@ -479,11 +479,11 @@ const PRODUCTS_DATA = [
     tags: ['तुलसीड्रॉप', 'आयुर्वेद', 'इम्युनिटी', 'IMC'],
     manufacturer: 'IMC Herbal (Since 2006)',
     expiry: 'कृपया पैक पर छपी तारीख देखें',
-    images: [
+        images: [
       {
-        src: createSvgPlaceholder('IMC Shri Tulsi Drops 20ml', 'Health Care', '#166534', 'imc-shri-tulsi-drops.webp', '600 x 600 px'),
+        src: 'images/imc-shri-tulsi-01.jpg',
         alt: 'IMC श्री तुलसी ड्रॉप 20ml पैक - Shalu Wellness Mart',
-        recommendedFilename: 'imc-shri-tulsi-01.webp',
+        recommendedFilename: 'imc-shri-tulsi-01.jpg',
         recommendedSize: '600x600px'
       }
     ]
@@ -524,11 +524,11 @@ const PRODUCTS_DATA = [
     tags: ['एक्टिवेटर', 'वेटरस्प्रेडर', 'खेती', 'IMC'],
     manufacturer: 'IMC',
     expiry: 'कृपया पैक पर छपी तारीख देखें',
-    images: [
+        images: [
       {
-        src: createSvgPlaceholder('IMC Activator Wetter-Spreader', 'Agriculture', '#15803D', 'imc-activator-500ml.webp', '600 x 600 px'),
+        src: 'images/imc-activator-500ml-01.jpg',
         alt: 'IMC एक्टिवेटर वेटर-स्प्रेडर 500ml - Shalu Wellness Mart',
-        recommendedFilename: 'imc-activator-500ml-01.webp',
+        recommendedFilename: 'imc-activator-500ml-01.jpg',
         recommendedSize: '600x600px'
       }
     ]
@@ -570,11 +570,11 @@ const PRODUCTS_DATA = [
     tags: ['डिटर्जेंटपाउडर', 'वाशिंगपाउडर', 'IMC'],
     manufacturer: 'IMC',
     expiry: 'कृपया पैक पर छपी तारीख देखें',
-    images: [
+        images: [
       {
-        src: createSvgPlaceholder('IMC Detergent Powder 1 Kg', 'Home & Lifestyle', '#1E3A8A', 'imc-detergent-1kg.webp', '600 x 600 px'),
+        src: 'images/imc-detergent-1kg-01.jpg',
         alt: 'IMC डिटर्जेंट पाउडर 1 Kg - Shalu Wellness Mart',
-        recommendedFilename: 'imc-detergent-1kg-01.webp',
+        recommendedFilename: 'imc-detergent-1kg-01.jpg',
         recommendedSize: '600x600px'
       }
     ]
@@ -623,7 +623,7 @@ const PRODUCTS_DATA = [
         recommendedSize: '600x600px'
       }
     ]
-    ]
+    
   }
 ];
 
